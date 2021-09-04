@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>
-                            My Profile
+                            My Profile 1
                         </h2>
                     </div>
 
