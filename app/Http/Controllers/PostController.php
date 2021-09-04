@@ -44,10 +44,7 @@ class PostController extends Controller
     }
 
     public function view(){
-        // $posts = Post::select(DB::raw("(COUNT(*)) as count"),DB::raw("MONTHNAME(created_at) as monthname"))
-        // ->whereYear('created_at', date('Y'))
-        // ->groupBy('monthname')
-        // ->get();
+        
         $posts = DB::table('posts')->get();
         return view('posts.posts_view', compact('posts'));
     }
