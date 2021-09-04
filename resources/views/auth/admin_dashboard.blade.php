@@ -195,8 +195,8 @@
 									<div class="row">
 										<div class="col-lg-3 col-sm-6">
 											<div class="widget-inline-box text-center">
-												<h3 class="m-t-10"><i class="text-primary mdi mdi-access-point-network"></i> <b data-plugin="counterup">8954</b></h3>
-												<p class="text-muted">Lifetime total sales</p>
+												<h3 class="m-t-10"><i class="text-primary mdi mdi-access-point-network"></i> <b data-plugin="counterup">4</b></h3>
+												<p class="text-muted">Total blogs by admin</p>
 											</div>
 										</div>
 
@@ -264,6 +264,33 @@
                             </div> 
                         </div> 
 
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box">
+                                    <h4 class="m-t-0">Recent Blog</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mails m-0 table table-actions-bar">
+                                            <thead>
+                                                <tr>
+                                                    <th>Blog Title</th>
+                                                    <th>Created at</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach ($posts as $post)
+                                                    <tr>
+                                                        <td>{{ $post->title }}</td>
+                                                        <td>{{ $post->created_at }}</td>  
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm-12">

@@ -17,12 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>New</td>
-                        <td>NEWBODY</td>
-                        <td>NEWCATEGORY</td>
-                    </tr> -->
+
                     @foreach($posts as $post)
                         <tr>
                             <td>{{ $post->id }}</td>
