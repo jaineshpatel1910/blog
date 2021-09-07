@@ -71,12 +71,13 @@ class AuthController extends Controller
     public function dashboardView(){
         $user = DB::select('select * from user');
         $comment = Comment::latest()->take(5)->get();
-        $posts = Post::latest()->take(1)->get();
+        $posts = Post::latest()->take(5)->get();
         if (Auth::user()->is_admin){
             return view('auth.admin_dashboard', ['user' => $user,'comments' => $comment, 'posts' => $posts]);
         }
         else{
-            return view('auth.dashboard', ['user' => $user]);
+            
+            return view('auth.dashboard', ['user' => $user, 'posts' => $posts]);
         }
         return redirect("login")->withSuccess('You dont have Access');
     }

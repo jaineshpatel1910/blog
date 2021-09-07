@@ -19,6 +19,11 @@ class ViewController extends Controller
         return view('show',['user'=>$user]);
     }
 
+    public function admin(){
+        $user = DB::table('user')->where('id',Auth::id())->get();
+        return view('admin',['user'=>$user]);
+    }
+
     public function view(Post $post){
         $comment = DB::select('select * from comments');
         return view('comments.view',['comments'=>$comment, 'posts'=>$post]);

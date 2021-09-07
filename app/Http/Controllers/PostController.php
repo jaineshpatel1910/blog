@@ -36,7 +36,10 @@ class PostController extends Controller
         $post->save();
         return redirect('/home')->with('success','Post created successfully!');
     }
-
+    public function blog(){
+        $posts = DB::table('posts')->get();
+        return view('posts.admin-blog', compact('posts'));
+    }
     
 
     public function edit(Post $post){
@@ -44,7 +47,6 @@ class PostController extends Controller
     }
 
     public function view(){
-        
         $posts = DB::table('posts')->get();
         return view('posts.posts_view', compact('posts'));
     }

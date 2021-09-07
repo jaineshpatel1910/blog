@@ -2,7 +2,7 @@
 <html lang="en">
     
 <!-- Mirrored from coderthemes.com/simple_1.1/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jun 2017 07:42:47 GMT -->
-<head>
+    <head>
         <meta charset="utf-8" />
         <title>BlogNet</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -37,7 +37,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="">
-                        <a href="http://appstane.com/" class="logo">
+                        <a href="" class="logo">
                             <img src="assets/images/logo_sm.png" alt="logo" class="logo-lg" /> BlogNet
                             <img src="assets/images/logo_sm.png" alt="logo" class="logo-sm hidden" />
                         </a>
@@ -59,9 +59,9 @@
 
                             <!-- Top nav left menu -->
                             <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="/">Home</a></li>
+                                <!-- <li><a href="#">Help</a></li>
+                                <li><a href="#">Contact</a></li> -->
                             </ul>
 
                             <!-- Top nav Right menu -->
@@ -69,7 +69,7 @@
                                 <li class="dropdown top-menu-item-xs">
                                     <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/app.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/view"><i class="ti-user m-r-10"></i> Profile</a></li>
+                                        <li><a href="/view-admin"><i class="ti-user m-r-10"></i> Profile</a></li>
                                         <li class="divider"></li>
                                         <li><a href="/logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
                                     </ul>
@@ -93,15 +93,7 @@
                                 <i class="mdi mdi-close"></i>
                             </button>
                             <!-- User Detail box -->
-                            <div class="user-details">
-                                <div class="pull-left">
-                                    <img src="assets/images/app.jpg" alt="" class="thumb-md img-circle">
-                                </div>
-                                <div class="user-info">
-                                    <a href="#">Appstane</a>
-                                    <p class="text-muted m-0">Administrator</p>
-                                </div>
-                            </div>
+                            
                             <!--- End User Detail box -->
 
                             <!-- Left Menu Start -->
@@ -114,7 +106,7 @@
                                     <a href="javascript: void(0);" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs <span class="fa arrow"></span></a>
                                     <ul class="nav-second-level nav" aria-expanded="true">
                                         <li><a href="/home">Create Blogs</a></li>
-                                        <li><a href="/posts-view">Blogs</a></li>
+                                        <li><a href="/admin-blog">Blogs</a></li>
                                     </ul>
                                 </li>
 
@@ -145,7 +137,6 @@
                                     <ul class="nav-second-level nav" aria-expanded="true">
                                         <li><a href="/show">Users</a></li>
                                         <li><a href="/view-comments">Comments</a></li>
-                                        <li><a href="/view">Profile</a></li>
                                         <!-- <li><a href="pages-lock-screen.html">Lock-screen</a></li>
                                         <li><a href="pages-blank.html">Blank page</a></li>
                                         <li><a href="pages-404.html">Error 404</a></li>
@@ -187,7 +178,6 @@
 
                 <!-- START PAGE CONTENT -->
                 <div id="page-right-content">
-
                     <div class="container">
                         <div class="row">
 							<div class="col-sm-12">
@@ -228,7 +218,7 @@
                         <!--end row -->
 
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-6">
                                 <div class="card-box">
                                     <h4 class="m-t-0">Total Revenue</h4>
@@ -262,13 +252,13 @@
                                     <div id="dashboard-line-chart" style="height: 300px;"></div>
                                 </div>
                             </div> 
-                        </div> 
+                        </div>  -->
 
 
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-                                    <h4 class="m-t-0">Recent Blog</h4>
+                                    <h4 class="m-t-0">Recent Blogs</h4>
                                     <div class="table-responsive">
                                         <table class="table table-hover mails m-0 table table-actions-bar">
                                             <thead>
@@ -319,6 +309,7 @@
                                                     <th>Id</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
+                                                    <th>Phone</th>
                                                     <th>Is admin</th>
                                                 </tr>
                                             </thead>
@@ -329,6 +320,7 @@
                                                             <td>{{ $user->id }}</td>
                                                             <td>{{ $user->name }}</td>
                                                             <td>{{ $user->email }}</td>
+                                                            <td>{{ $user->phone_number }}</td>
                                                             <td>{{ ($user->is_admin)?'Yes':'No' }}</td>  
                                                     </tr>
                                                 @endforeach
@@ -511,23 +503,28 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-                                    <h4 class="m-t-0">Recent Comments</h4>
+                                    <h4 class="m-t-0">Recent Blogs</h4>
                                     <div class="table-responsive">
                                         <table class="table table-hover mails m-0 table table-actions-bar">
                                             <thead>
                                                 <tr>
-                                                    <th>User Id</th>
-                                                    <th>Post Id</th>
-                                                    <th>Comment</th>
+                                                    <th>Id</th>
+                                                    <th>Title</th>
+                                                    <th>Body</th>
+                                                    <th>Category</th>
+                                                    <th>Created at</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                @foreach ($comments as $comment)
+                                                @foreach ($posts as $post)
                                                     <tr>
-                                                        <td>{{ $comment->user_id }}</td>
-                                                        <td>{{ $comment->post_id }}</td>
-                                                        <td>{{ $comment->body }}</td>   
+                                                        <td>{{ $post->id }}</td>
+                                                        <td>{{ $post->title }}</td>
+                                                        <td>{{ $post->body }}</td> 
+                                                        <td>{{ $post->category }}</td> 
+                                                        <td>{{ $post->created_at }}</td> 
+
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -546,7 +543,7 @@
                             Project Completed <strong class="text-custom">38%</strong>.
                         </div>
                         <div>
-                            <strong>Appstane</strong> - Copyright &copy; 2017
+                            <strong>Appstane</strong> - Copyright &copy; 2021
                         </div>
                     </div> <!-- end footer -->
 

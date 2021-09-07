@@ -84,6 +84,8 @@
 
             <!-- Page content start -->
             <div class="page-contentbar">
+
+                <!--left navigation start-->
                 <aside class="sidebar-navigation">
                     <div class="scrollbar-wrapper">
                         <div>
@@ -96,13 +98,16 @@
 
                             <!-- Left Menu Start -->
                             <ul class="metisMenu nav" id="side-menu">
-                                <li><a href="/dashboard"><i class="ti-home"></i> Dashboard </a></li>
+                                <li><a href="/admin-dashboard"><i class="ti-home"></i> Dashboard </a></li>
 
                                 <!-- <li><a href="ui-elements.html"><span class="label label-custom pull-right">11</span> <i class="ti-paint-bucket"></i> UI Elements </a></li> -->
 
                                 <li>
-                                    <a href="/posts-view" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs </a>
-                                    
+                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs <span class="fa arrow"></span></a>
+                                    <ul class="nav-second-level nav" aria-expanded="true">
+                                        <li><a href="/home">Create Blogs</a></li>
+                                        <li><a href="/posts-view">Blogs</a></li>
+                                    </ul>
                                 </li>
 
                                 <!-- <li><a href="typography.html"><i class="ti-spray"></i> Typography </a></li> -->
@@ -127,7 +132,18 @@
 
                                 <li><a href="maps.html"><i class="ti-location-pin"></i> Maps </a></li> -->
 
-                                
+                                <li>
+                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-files"></i> View<span class="fa arrow"></span></a>
+                                    <ul class="nav-second-level nav" aria-expanded="true">
+                                        <li><a href="/show">Users</a></li>
+                                        <li><a href="/view-comments">Comments</a></li>
+                                        <!-- <li><a href="pages-lock-screen.html">Lock-screen</a></li>
+                                        <li><a href="pages-blank.html">Blank page</a></li>
+                                        <li><a href="pages-404.html">Error 404</a></li>
+                                        <li><a href="pages-confirm-mail.html">Confirm Mail</a></li>
+                                        <li><a href="pages-session-expired.html">Session Expired</a></li> -->
+                                    </ul>
+                                </li>
 
                                 <!-- <li>
                                     <a href="javascript: void(0);" aria-expanded="true"><i class="ti-widget"></i> Extra Pages <span class="fa arrow"></span></a>
@@ -158,57 +174,42 @@
                         </div>
                     </div><!--Scrollbar wrapper-->
                 </aside>
+                <!--left navigation end-->
+
+                <!-- START PAGE CONTENT -->
                 <div id="page-right-content">
-
-                    <div class="container">
+                    
+                <div class="container">
+                        <h3>Blogs</h3>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box">
-                                    <div class="m-t-0">
-                                        <h3>
-                                            My Profile 
-                                        </h3>
-                                    </div>
-                                    <br>
-                                    <div class="table-responsive">
-                                        <table class="table table-hover mails m-0 table table-actions-bar">
-                                            <thead>
-                                                <tr>
-                                                    <th>Attribute</th>
-                                                    <th>Value</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($user as $user)
-                                                    <tr>
-                                                        <td>Id</td>
-                                                        <td>{{ $user->id }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>{{ $user->name }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Email</td>
-                                                        <td>{{ $user->email }}</td>
-                                                    </tr>
-                                                
-                                                    <tr>
-                                                        <td>Phone Number</td>
-                                                        <td>{{ $user->phone_number }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-
-            
-        
+							<div class="col-sm-12">
+									<div class="row">
+                                        <br>
+                                        @foreach ($posts as $post)
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    {{ $post->title }}
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <span class="pull-right">
+                                                        {{ $post->created_at }}
+                                                    </span>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <p>{{ $post->body }}</p>
+                                                    <p>
+                                                        Category:
+                                                        <span class="btn btn-sm btn-success">{{ $post->category }}</span>
+                                                    </p>
+                                                    <br>
+                                                    <a href="posts/{{$post->id}}" class="btn btn-primary">Show</a>
+                                                    
+                                                </div>
+                                            </div>
+                                        @endforeach
+								    </div>
+						    </div>
+					    </div>
                     <!-- end container -->
 
                     <div class="footer">

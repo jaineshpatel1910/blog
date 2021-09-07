@@ -1,152 +1,238 @@
-@extends('app')
-
-@section('content')
-
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+    
+<!-- Mirrored from coderthemes.com/simple_1.1/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jun 2017 07:42:47 GMT -->
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel Blog</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <meta charset="utf-8" />
+        <title>BlogNet</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <script>
-        jQuery(document).ready(function($){
-            $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-            });
-        })
-        </script>
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <style>
-            body {
-                overflow-x: hidden;
-            }
-            #sidebar-wrapper {
-                min-height: 100vh;
-                margin-left: -15rem;
-                -webkit-transition: margin .25s ease-out;
-                -moz-transition: margin .25s ease-out;
-                -o-transition: margin .25s ease-out;
-                transition: margin .25s ease-out;
-            }
-            #sidebar-wrapper .sidebar-heading {
-                padding: 0.875rem 1.25rem;
-                font-size: 1.2rem;
-            }
-            #sidebar-wrapper .list-group {
-                width: 15rem;
-            }
-            #page-content-wrapper {
-                min-width: 100vw;
-            }
-            #wrapper.toggled #sidebar-wrapper {
-                margin-left: 0;
-            }
-            @media (min-width: 768px) {
-                #sidebar-wrapper {
-                margin-left: 0;
-                }
-                #page-content-wrapper {
-                    min-width: 0;
-                    width: 100%;
-                }
-                #wrapper.toggled #sidebar-wrapper {
-                    margin-left: -15rem;
-                }
-            }
-        </style>    
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <!-- MetisMenu CSS -->
+        <link href="assets/css/metisMenu.min.css" rel="stylesheet">
+        <!-- Icons CSS -->
+        <link href="assets/css/icons.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="assets/css/style.css" rel="stylesheet">
+
     </head>
+
+
     <body>
-        <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-            <div class="bg-light border-right" id="sidebar-wrapper">
-                <div class="sidebar-heading">Welcome to Laravel Blog</div>
-                    <div class="list-group list-group-flush">
-                        <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                        <a href="/posts-view" class="list-group-item list-group-item-action bg-light">Blogs</a>
-                        <a href="/view" class="list-group-item list-group-item-action bg-light">Profile</a>
-                        <a href="/chat" class="list-group-item list-group-item-action bg-light">Chat</a>
-                        <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+
+        <div id="page-wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="">
+                        <a href="" class="logo">
+                            <img src="assets/images/logo_sm.png" alt="logo" class="logo-lg" /> BlogNet
+                            <img src="assets/images/logo_sm.png" alt="logo" class="logo-sm hidden" />
+                        </a>
                     </div>
                 </div>
-                <!-- /#sidebar-wrapper -->
-                <!-- Page Content -->
-                <div id="page-content-wrapper">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                                <!-- <li class="nav-item active">
-                                <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
-                                </li> -->
-                                <!-- <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                                </li> -->
-                                <li class="nav-item dropdown">
 
-                                    <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div> -->
+                <!-- Top navbar -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="">
 
-                                    <!-- <div class="container mt-5" style="max-width: 500px"> -->
-                                    <!-- <div class="d-grid"> -->
-                                    <a href="{{ route('logout') }}">Log-out</a>
-                                    <!-- </div>   -->
-                                    <!-- </div> -->
+                            <!-- Mobile menu button -->
+                            <div class="pull-left">
+                                <button type="button" class="button-menu-mobile visible-xs visible-sm">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <span class="clearfix"></span>
+                            </div>
+
+                            <!-- Top nav left menu -->
+                            <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
+                                <li><a href="/">Home</a></li>
+                                <!-- <li><a href="#">Help</a></li>
+                                <li><a href="#">Contact</a></li> -->
+                            </ul>
+
+                            <!-- Top nav Right menu -->
+                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                <li class="dropdown top-menu-item-xs">
+                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/app.jpg" alt="user-img" class="img-circle"> </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/view"><i class="ti-user m-r-10"></i> Profile</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="/logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
-                    </nav>
-                    <br>
-                    <div class="container-fluid">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-8">
-                                    <div class="card">
-                                        <div class="card-header">{{ __('Dashboard') }}</div>
-                                        <div class="card-body">
-                                            @if (session('status'))
-                                                <div class="alert alert-success" role="alert">
-                                                    {{ session('status') }}
-                                                </div>
-                                            @endif
+                    </div> <!-- end container -->
+                </div> <!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
 
-                                            {{ __('You are logged in!') }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+            <!-- Page content start -->
+            <div class="page-contentbar">
+
+                <!--left navigation start-->
+                <aside class="sidebar-navigation">
+                    <div class="scrollbar-wrapper">
+                        <div>
+                            <button type="button" class="button-menu-mobile btn-mobile-view visible-xs visible-sm">
+                                <i class="mdi mdi-close"></i>
+                            </button>
+                            <!-- User Detail box -->
+                            
+                            <!--- End User Detail box -->
+
+                            <!-- Left Menu Start -->
+                            <ul class="metisMenu nav" id="side-menu">
+                                <li><a href="/dashboard"><i class="ti-home"></i> Dashboard </a></li>
+
+                                <!-- <li><a href="ui-elements.html"><span class="label label-custom pull-right">11</span> <i class="ti-paint-bucket"></i> UI Elements </a></li> -->
+
+                                <li>
+                                    <a href="/posts-view" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs </a>
+                                    
+                                </li>
+
+                                <!-- <li><a href="typography.html"><i class="ti-spray"></i> Typography </a></li> -->
+
+                                <li>
+                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-pencil-alt"></i> Forms <span class="fa arrow"></span></a>
+                                    <ul class="nav-second-level nav" aria-expanded="true">
+                                        <li><a href="/login">Login</a></li>
+                                        <li><a href="/register">Register</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- <li>
+                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-menu-alt"></i> Tables <span class="fa arrow"></span></a>
+                                    <ul class="nav-second-level nav" aria-expanded="true">
+                                        <li><a href="tables-basic.html">Basic tables</a></li>
+                                        <li><a href="tables-advanced.html">Advanced tables</a></li>
+                                    </ul>
+                                </li> -->
+
+                                <!-- <li><a href="charts.html"><span class="label label-custom pull-right">5</span> <i class="ti-pie-chart"></i> Charts </a></li>
+
+                                <li><a href="maps.html"><i class="ti-location-pin"></i> Maps </a></li> -->
+
+                                
+
+                                <!-- <li>
+                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-widget"></i> Extra Pages <span class="fa arrow"></span></a>
+                                    <ul class="nav-second-level nav" aria-expanded="true">
+                                        <li><a href="extras-timeline.html">Timeline</a></li>
+                                        <li><a href="extras-invoice.html">Invoice</a></li>
+                                        <li><a href="extras-profile.html">Profile</a></li>
+                                        <li><a href="extras-calendar.html">Calendar</a></li>
+                                        <li><a href="extras-faqs.html">FAQs</a></li>
+                                        <li><a href="extras-pricing.html">Pricing</a></li>
+                                        <li><a href="extras-contacts.html">Contacts</a></li>
+                                    </ul>
+                                </li> -->
+
+                                <li>
+                                    <a href="/chat" aria-expanded="true"><i class="ti-share"></i> Chat </a>
+                                    <!-- <ul class="nav-second-level nav" aria-expanded="true">
+                                        <li><a href="javascript: void(0);">Level 1.1</a></li>
+                                        <li><a href="javascript: void(0);" aria-expanded="true">Level 1.2 <span class="fa arrow"></span></a>
+                                            <ul class="nav-third-level nav" aria-expanded="true">
+                                                <li><a href="javascript: void(0);">Level 2.1</a></li>
+                                                <li><a href="javascript: void(0);">Level 2.2</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul> -->
+                                </li>
+                            </ul>
                         </div>
+                    </div><!--Scrollbar wrapper-->
+                </aside>
+                <!--left navigation end-->
+
+                <!-- START PAGE CONTENT -->
+                <div id="page-right-content">
+
+                    <div class="container">
+                        
+                        <!--end row -->
+                        <h3>BLOGS</h3>
+
+                        <div class="row">
+                                        @foreach ($posts as $post)
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    {{ $post->title }}
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <span class="pull-right">
+                                                        {{ $post->created_at->toDayDateTimeString() }}
+                                                    </span>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <p>{{ $post->body }}</p>
+                                                    <p>
+                                                        Category:
+                                                        <span class="btn btn-sm btn-success">{{ $post->category }}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                        </div> 
+
+                        
+
                     </div>
-                    <br>
-                    
-                    
-                    
+                    <!-- end container -->
+
+                    <div class="footer">
+                        <div class="pull-right hidden-xs">
+                            Project Completed <strong class="text-custom">38%</strong>.
+                        </div>
+                        <div>
+                            <strong>Appstane</strong> - Copyright &copy; 2021
+                        </div>
+                    </div> <!-- end footer -->
 
                 </div>
-                <!-- /#page-content-wrapper -->
-            </div>
-        <!-- /#wrapper -->
-    </body>
-</html>
+                <!-- End #page-right-content -->
 
-@yield('content')
-@endsection
+            </div>
+            <!-- end .page-contentbar -->
+        </div>
+        <!-- End #page-wrapper -->
+
+
+
+        <!-- js placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery-2.1.4.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/metisMenu.min.js"></script>
+        <script src="assets/js/jquery.slimscroll.min.js"></script>
+
+        <!--Morris Chart-->
+		<script src="assets/plugins/morris/morris.min.js"></script>
+		<script src="assets/plugins/raphael/raphael-min.js"></script>
+
+        <!-- Dashboard init -->
+		<script src="assets/pages/jquery.dashboard.js"></script>
+
+        <!-- App Js -->
+        <script src="assets/js/jquery.app.js"></script>
+
+    </body>
+
+<!-- Mirrored from coderthemes.com/simple_1.1/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Jun 2017 07:43:14 GMT -->
+</html>

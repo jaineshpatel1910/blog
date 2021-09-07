@@ -51,6 +51,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //route for admin
 Route::get('/admin-dashboard', [AuthController::class, 'dashboardView']);
 
+
+//view partiular logged-in user to admin-dashboard
+Route::get('/view-admin', [ViewController::class, 'admin']);
+
 //view partiular logged-in user
 Route::get('/view', [ViewController::class, 'index']);
 //view all users to admin
@@ -66,6 +70,9 @@ Route::get('posts/create', [PostController::class, 'create']);
 Route::post('post', [PostController::class, 'store']);
 Route::get('posts/{post}/edit', [PostController::class, 'edit']);
 Route::get('/posts-view', [PostController::class, 'view']);
+//for admin dashboard-viewblog
+Route::get('/admin-blog', [PostController::class, 'blog']);
+
 Route::get('posts/{post}', [PostController::class, 'show']);
 Route::get('posts/{post}/comment', [PostController::class, 'comment']);
 Route::post('posts/{post}/comments', [PostController::class, 'comments']);
