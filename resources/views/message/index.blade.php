@@ -75,6 +75,15 @@
                                     </ul>
                                 </li>
                             </ul>
+
+                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                <li class="hidden-xs">
+                                    <form role="search" class="navbar-left app-search pull-left">
+                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <a href="#"><i class="fa fa-search"></i></a>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
                     </div> <!-- end container -->
                 </div> <!-- end navbar -->
@@ -162,9 +171,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
+                                <h4 class="header-title m-t-0 m-b-20">Chat</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
                                 <div class="card-box">
-                                    <h4 class="m-t-0">Chat</h4>
-                                    <br>
                                     <div class="table-responsive">
                                         <table class="table table-hover mails m-0 table table-actions-bar">
                                             <thead>
@@ -223,7 +235,8 @@
                             Project Completed <strong class="text-custom">38%</strong>.
                         </div>
                         <div>
-                            <strong>Appstane</strong> - Copyright &copy; 2021
+                            <strong>Appstane</strong> - Copyright &copy;
+                            <script>document.write(new Date().getFullYear())</script>
                         </div>
                     </div> <!-- end footer -->
 

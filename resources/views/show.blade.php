@@ -12,6 +12,18 @@
 
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+        <!-- Plugins css-->
+        <link href="assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link rel="stylesheet" href="assets/plugins/switchery/switchery.min.css">
+        <link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+		<link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <!-- Summernote css -->
+        <link href="assets/plugins/summernote/summernote.css" rel="stylesheet" />
+
         <!--Morris Chart CSS -->
 		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
 
@@ -58,13 +70,13 @@
                             </div>
 
                             <!-- Top nav left menu -->
-                            <!-- <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul> -->
+                            <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
+                                <li><a href="/">Home</a></li>
+                                <!-- <li><a href="#">Help</a></li>
+                                <li><a href="#">Contact</a></li> -->
+                            </ul>
 
-                            <!-- Top nav Right menu -->
+
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
                                 <li class="dropdown top-menu-item-xs">
                                     <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/app.jpg" alt="user-img" class="img-circle"> </a>
@@ -75,6 +87,16 @@
                                     </ul>
                                 </li>
                             </ul>
+
+                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                <li class="hidden-xs">
+                                    <form role="search" class="navbar-left app-search pull-left">
+                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <a href="#"><i class="fa fa-search"></i></a>
+                                    </form>
+                                </li>
+                            </ul>
+                            
                         </div>
                     </div> <!-- end container -->
                 </div> <!-- end navbar -->
@@ -181,24 +203,48 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <div class="input-group m-t-10">
+                                            <input type="text" name="name" class="form-control" placeholder="Search">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div> <!-- form-group -->
+                                </form>
                                 <h4 class="header-title m-t-0 m-b-20">Users</h4>
+                                
                             </div>
-                        </div> <!-- end row -->
+                        </div>
+
+
+                        <!-- <div class="col-md-4">
+                            <form role="form">
+                                <div class="form-group">
+                                    <div class="input-group m-t-10">
+                                        <input type="text" id="example-input3-group2" name="example-input3-group2" class="form-control" placeholder="Search">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </div> 
+                            </form>
+                        </div> -->
                         
                         <div class="row">
                             @foreach ($user as $user)
                             <div class="col-md-4">
                                 <div class="text-center card-box">
-                                    <div class="dropdown pull-right">
+                                    <!-- <div class="dropdown pull-right">
                                         <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
                                             <h3 class="m-0 text-muted"><i class="mdi mdi-dots-horizontal"></i></h3>
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
+                                            <li><a href="/view">Edit</a></li>
                                             <li><a href="#">Delete</a></li>
-                                            <li><a href="#">Block</a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                     <div class="clearfix"></div>
                                     <div class="member-card">
                                         
@@ -214,8 +260,15 @@
                                             <td>{{ $user->email }}</td>
                                         </div>
                                         
-                                        <button type="/chat" class="btn btn-default btn-sm m-t-10">Message</button>
-                                        <button type="/view" class="btn btn-default btn-sm m-t-10">View Profile</button>
+                                        <a href="/chat" class="btn btn-default btn-sm m-t-10">Message</a>
+                                        <a href="/view-admin" class="btn btn-default btn-sm m-t-10">View Profile</a>
+                                        <br>
+                                        <br>
+
+                                        <div class="switchery-demo">
+                                            <input type="checkbox" name="is_admin"  value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" />
+                                        </div>
+
                                         <ul class="social-links list-inline m-t-30">
                                             <li>
                                                 <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -242,7 +295,8 @@
                             Project Completed <strong class="text-custom">38%</strong>.
                         </div>
                         <div>
-                            <strong>Appstane</strong> - Copyright &copy; 2021
+                            <strong>Appstane</strong> - Copyright &copy;
+                            <script>document.write(new Date().getFullYear())</script>
                         </div>
                     </div> <!-- end footer -->
 
@@ -262,15 +316,45 @@
         <script src="assets/js/metisMenu.min.js"></script>
         <script src="assets/js/jquery.slimscroll.min.js"></script>
 
+        <script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="assets/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+        <script type="text/javascript" src="assets/plugins/parsleyjs/parsley.min.js"></script>
+
+        <script src="assets/plugins/moment/moment.js"></script>
+     	<script src="assets/plugins/timepicker/bootstrap-timepicker.js"></script>
+     	<script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+     	<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+     	<script src="assets/plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+     	<script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="assets/plugins/summernote/summernote.min.js"></script>
+
+
         <!--Morris Chart-->
 		<script src="assets/plugins/morris/morris.min.js"></script>
 		<script src="assets/plugins/raphael/raphael-min.js"></script>
+
+         <!-- form advanced init js -->
+         <script src="assets/pages/jquery.form-advanced.init.js"></script>
 
         <!-- Dashboard init -->
 		<script src="assets/pages/jquery.dashboard.js"></script>
 
         <!-- App Js -->
         <script src="assets/js/jquery.app.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.form-validation').parsley();
+                $('.summernote').summernote({
+                    height: 350,                 // set editor height
+                    minHeight: null,             // set minimum height of editor
+                    maxHeight: null,             // set maximum height of editor
+                    focus: false                 // set focus to editable area after initializing summernote
+                });
+            });
+        </script>
 
     </body>
 

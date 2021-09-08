@@ -75,6 +75,15 @@
                                     </ul>
                                 </li>
                             </ul>
+
+                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                <li class="hidden-xs">
+                                    <form role="search" class="navbar-left app-search pull-left">
+                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <a href="#"><i class="fa fa-search"></i></a>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
                     </div> <!-- end container -->
                 </div> <!-- end navbar -->
@@ -216,7 +225,8 @@
                             Project Completed <strong class="text-custom">38%</strong>.
                         </div>
                         <div>
-                            <strong>Appstane</strong> - Copyright &copy; 2021
+                            <strong>Appstane</strong> - Copyright &copy;
+                            <script>document.write(new Date().getFullYear())</script>
                         </div>
                     </div> <!-- end footer -->
 

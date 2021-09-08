@@ -75,6 +75,15 @@
                                     </ul>
                                 </li>
                             </ul>
+
+                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                <li class="hidden-xs">
+                                    <form role="search" class="navbar-left app-search pull-left">
+                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <a href="#"><i class="fa fa-search"></i></a>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
                     </div> <!-- end container -->
                 </div> <!-- end navbar -->
@@ -180,7 +189,11 @@
                 <div id="page-right-content">
                     
                 <div class="container">
-                        <h3>Blogs</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="header-title m-t-0 m-b-20">Blogs</h4>
+                            </div>
+                        </div>
                         <a href="posts/create" class="btn btn-primary mb-2">Create Post</a>
                         <br>
                         <div class="row">
@@ -226,7 +239,8 @@
                             Project Completed <strong class="text-custom">38%</strong>.
                         </div>
                         <div>
-                            <strong>Appstane</strong> - Copyright &copy; 2021
+                            <strong>Appstane</strong> - Copyright &copy;
+                            <script>document.write(new Date().getFullYear())</script>
                         </div>
                     </div> <!-- end footer -->
 

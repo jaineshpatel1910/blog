@@ -68,18 +68,31 @@ class AuthController extends Controller
     //     return redirect("login")->withSuccess('You dont have Access');
     // }
 
-    public function dashboardView(){
+    public function dashboardView(Request $request){
         $user = DB::select('select * from user');
         $comment = Comment::latest()->take(5)->get();
         $posts = Post::latest()->take(5)->get();
+        // $name = $request->get('name');
+        // if($name != ""){
+        //     $user = User::where('name','LIKE','%'.$name.'%')->get();
+        //     if(count ( $user ) > 0){
+        //         return view('auth.admin_dashboard')->withDetails ( $user )->withQuery ( $name );
+        //     }
+        // }
+        // return view('auth.admin_dashboard')->withMesage("No data found!");
+        
         if (Auth::user()->is_admin){
             return view('auth.admin_dashboard', ['user' => $user,'comments' => $comment, 'posts' => $posts]);
         }
         else{
-            
             return view('auth.dashboard', ['user' => $user, 'posts' => $posts]);
         }
         return redirect("login")->withSuccess('You dont have Access');
+
+        // if(checkbox == checked){
+        //     $user = DB::table('user')->where('checked')->update(['is_admin' => 1]);
+        //     DB::update('update user set is_admin = 1 where');
+        // }
     }
 
 

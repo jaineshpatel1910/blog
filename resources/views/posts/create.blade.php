@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
         <div class="jumbotron">
-            <h1>Create a new blog</h1>
+            <h1>Create blog</h1>
         </div>
 
         <div class="col-md-12">
@@ -24,7 +24,7 @@
                     <input type="text" name="category" class="form-control" required>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Create a new blog</button>
+                <button class="btn btn-primary" type="submit">Create</button>
                 {{ csrf_field() }}
             </form>
         </div>

@@ -33,7 +33,6 @@
 
             <!-- Top Bar Start -->
             <div class="topbar">
-
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="">
@@ -73,6 +72,15 @@
                                         <li class="divider"></li>
                                         <li><a href="/logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
                                     </ul>
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                <li class="hidden-xs">
+                                    <form role="search" class="navbar-left app-search pull-left">
+                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <a href="#"><i class="fa fa-search"></i></a>
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -290,22 +298,6 @@
                                         <table class="table table-hover mails m-0 table table-actions-bar">
                                             <thead>
                                                 <tr>
-                                                    <!-- <th style="min-width: 95px;">
-                                                        <div class="checkbox checkbox-primary checkbox-single m-r-15">
-                                                            <input id="action-checkbox" type="checkbox">
-                                                            <label for="action-checkbox"></label>
-                                                        </div> -->
-                                                        <!--<div class="btn-group dropdown">-->
-                                                            <!--<button type="button" class="btn btn-default btn-xs dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false"><i class="caret"></i></button>-->
-                                                            <!--<ul class="dropdown-menu" role="menu">-->
-                                                                <!--<li><a href="#">Action</a></li>-->
-                                                                <!--<li><a href="#">Another action</a></li>-->
-                                                                <!--<li><a href="#">Something else here</a></li>-->
-                                                                <!--<li class="divider"></li>-->
-                                                                <!--<li><a href="#">Separated link</a></li>-->
-                                                            <!--</ul>-->
-                                                        <!--</div>-->
-                                                    <!-- </th> -->
                                                     <th>Id</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
@@ -543,7 +535,8 @@
                             Project Completed <strong class="text-custom">38%</strong>.
                         </div>
                         <div>
-                            <strong>Appstane</strong> - Copyright &copy; 2021
+                            <strong>Appstane</strong> - Copyright &copy;
+                            <script>document.write(new Date().getFullYear())</script>
                         </div>
                     </div> <!-- end footer -->
 

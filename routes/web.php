@@ -70,6 +70,7 @@ Route::get('posts/create', [PostController::class, 'create']);
 Route::post('post', [PostController::class, 'store']);
 Route::get('posts/{post}/edit', [PostController::class, 'edit']);
 Route::get('/posts-view', [PostController::class, 'view']);
+
 //for admin dashboard-viewblog
 Route::get('/admin-blog', [PostController::class, 'blog']);
 
