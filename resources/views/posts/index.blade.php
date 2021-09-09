@@ -192,11 +192,11 @@
                 <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="header-title m-t-0 m-b-20">Blogs</h4>
-                                <form action="/search" method="GET" role="search">
+                                <form action="/search1" method="GET" role="search">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <div class="input-group m-t-10">
-                                            <input type="search" name="search" method="GET" class="form-control" placeholder="Search">
+                                            <input type="search" name="search1" method="GET" class="form-control" placeholder="Search">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                             </span>

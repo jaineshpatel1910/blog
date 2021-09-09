@@ -86,7 +86,7 @@ Route::post('posts/{post}/comments', [PostController::class, 'comments']);
  
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
 Route::get('admin-edit', [PostController::class,'']);
-Route::get('/search', [PostController::class, 'search']);
+Route::get('/search1', [PostController::class, 'search']);
 
 //comment
 //Route::get('/comment', [CommentController::class, 'index']);

@@ -24,8 +24,8 @@ class PostController extends Controller
     }
 
     public function search(Request $request){
-        $search = $request->get('search');
-        $posts = DB::table('posts')->where('title', 'like', '%'.$search.'%')->paginate(5);
+        $search1 = $request->get('search1');
+        $posts = DB::table('posts')->where('title', 'like', '%'.$search1.'%')->paginate(5);
         return view('posts.index', ['posts' => $posts]);
         // return view('posts.admin-blog', ['posts' => $posts]);
         // return view('posts.posts_view', ['posts' => $posts]);
