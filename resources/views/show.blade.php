@@ -203,6 +203,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
+                                <h4 class="header-title m-t-0 m-b-20">Users</h4>
                                 <form role="form">
                                     <div class="form-group">
                                         <div class="input-group m-t-10">
@@ -213,8 +214,6 @@
                                         </div>
                                     </div> <!-- form-group -->
                                 </form>
-                                <h4 class="header-title m-t-0 m-b-20">Users</h4>
-                                
                             </div>
                         </div>
 
@@ -236,15 +235,15 @@
                             @foreach ($user as $user)
                             <div class="col-md-4">
                                 <div class="text-center card-box">
-                                    <!-- <div class="dropdown pull-right">
+                                    <div class="dropdown pull-right">
                                         <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
                                             <h3 class="m-0 text-muted"><i class="mdi mdi-dots-horizontal"></i></h3>
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="/view">Edit</a></li>
+                                            
                                             <li><a href="#">Delete</a></li>
                                         </ul>
-                                    </div> -->
+                                    </div>
                                     <div class="clearfix"></div>
                                     <div class="member-card">
                                         
@@ -261,13 +260,24 @@
                                         </div>
                                         
                                         <a href="/chat" class="btn btn-default btn-sm m-t-10">Message</a>
-                                        <a href="/view-admin" class="btn btn-default btn-sm m-t-10">View Profile</a>
+                                        <a href="user/{{$user->id}}/edit" class="btn btn-default btn-sm m-t-10">Edit</a>
                                         <br>
                                         <br>
 
+                                        <form action="{{ route('user.registration') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="switchery-demo">
+                                            <input type="hidden" name="is_admin" value="1">
                                             <input type="checkbox" name="is_admin"  value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" />
                                         </div>
+                                        <input class="btn btn-success" type="submit" value="Submit">
+
+                                        
+                                        <!-- <div class="radio radio-success radio-single">
+                                            <input type="radio" value="1" name="is_admin" checked aria-label="Single radio Two">
+                                            <label>Make Admin</label>
+                                        </div> -->
+                                        </form>
 
                                         <ul class="social-links list-inline m-t-30">
                                             <li>

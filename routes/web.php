@@ -69,6 +69,7 @@ Route::get('/home', [PostController::class, 'index'])->name('home');
 Route::get('posts/create', [PostController::class, 'create']);
 Route::post('post', [PostController::class, 'store']);
 Route::get('posts/{post}/edit', [PostController::class, 'edit']);
+Route::put('posts/{post}', [PostController::class, 'update']);
 Route::get('/posts-view', [PostController::class, 'view']);
 
 //for admin dashboard-viewblog
@@ -77,8 +78,11 @@ Route::get('/admin-blog', [PostController::class, 'blog']);
 Route::get('posts/{post}', [PostController::class, 'show']);
 Route::get('posts/{post}/comment', [PostController::class, 'comment']);
 Route::post('posts/{post}/comments', [PostController::class, 'comments']);
-Route::put('posts/{post}', [PostController::class, 'update']); 
+ 
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
+
+
+Route::get('admin-edit', [PostController::class,'']);
 
 //comment
 //Route::get('/comment', [CommentController::class, 'index']);
@@ -88,3 +92,7 @@ Route::delete('posts/{post}', [PostController::class, 'destroy']);
 // Route::get('/blogs', [BlogController::class, 'index']);
 // Route::get('/blogs/create', [BlogController::class, 'create']);
 // Route::post('/blogs/store', [BlogController::class, 'store'])->name('blogs.store');
+
+//make user as admin
+Route::get('user/{user}/edit', [AuthController::class, 'edit']);
+Route::post('user/{user}', [AuthController::class, 'update']);

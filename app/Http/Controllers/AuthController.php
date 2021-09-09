@@ -61,6 +61,18 @@ class AuthController extends Controller
         ]);
     }
 
+    public function edit(User $user){
+        return view('user.edit', compact('user'));
+    }
+
+    public function update(User $user, Request $request){
+        $request->validate([
+            'is_admin' => '',
+        ]);
+        $user->is_admin = $request->is_admin;
+        $user->save();
+    }
+
     // public function dashboardView(){
     //     if (Auth::check()){
     //         return view('auth.dashboard');
@@ -72,6 +84,9 @@ class AuthController extends Controller
         $user = DB::select('select * from user');
         $comment = Comment::latest()->take(5)->get();
         $posts = Post::latest()->take(5)->get();
+
+        //return DB::table('user')->count();
+        
         // $name = $request->get('name');
         // if($name != ""){
         //     $user = User::where('name','LIKE','%'.$name.'%')->get();
@@ -88,11 +103,6 @@ class AuthController extends Controller
             return view('auth.dashboard', ['user' => $user, 'posts' => $posts]);
         }
         return redirect("login")->withSuccess('You dont have Access');
-
-        // if(checkbox == checked){
-        //     $user = DB::table('user')->where('checked')->update(['is_admin' => 1]);
-        //     DB::update('update user set is_admin = 1 where');
-        // }
     }
 
 

@@ -207,7 +207,7 @@
 
 										<div class="col-lg-3 col-sm-6">
 											<div class="widget-inline-box text-center">
-												<h3 class="m-t-10"><i class="text-info mdi mdi-black-mesa"></i> <b data-plugin="counterup">4</b></h3>
+												<h3 class="m-t-10"><i class="text-info mdi mdi-black-mesa"></i> <b data-plugin="counterup">5</b></h3>
 												<p class="text-muted">Total users</p>
 											</div>
 										</div>
