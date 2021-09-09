@@ -90,8 +90,8 @@
 
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
                                 <li class="hidden-xs">
-                                    <form role="search" class="navbar-left app-search pull-left">
-                                         <input type="text" placeholder="Search..." class="form-control">
+                                    <form action="" role="search" method="POST" class="navbar-left app-search pull-left">
+                                         <input type="text" name="" placeholder="Search..." class="form-control">
                                          <a href="#"><i class="fa fa-search"></i></a>
                                     </form>
                                 </li>
@@ -204,10 +204,11 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="header-title m-t-0 m-b-20">Users</h4>
-                                <form role="form">
+                                <form action="/search" method="GET" role="search">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
                                         <div class="input-group m-t-10">
-                                            <input type="text" name="name" class="form-control" placeholder="Search">
+                                            <input type="search" name="search" method="GET" class="form-control" placeholder="Search">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                             </span>
@@ -235,15 +236,14 @@
                             @foreach ($user as $user)
                             <div class="col-md-4">
                                 <div class="text-center card-box">
-                                    <div class="dropdown pull-right">
+                                    <!-- <div class="dropdown pull-right">
                                         <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
                                             <h3 class="m-0 text-muted"><i class="mdi mdi-dots-horizontal"></i></h3>
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
-                                            
                                             <li><a href="#">Delete</a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                     <div class="clearfix"></div>
                                     <div class="member-card">
                                         

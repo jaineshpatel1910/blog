@@ -50,6 +50,11 @@ Route::get('/dashboard', [AuthController::class, 'dashboardView'])->name('dashbo
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //route for admin
 Route::get('/admin-dashboard', [AuthController::class, 'dashboardView']);
+//make user as admin
+Route::get('user/{user}/edit', [AuthController::class, 'edit']);
+Route::post('user/{user}', [AuthController::class, 'update']);
+Route::get('/search', [AuthController::class, 'search']);
+
 
 
 //view partiular logged-in user to admin-dashboard
@@ -80,9 +85,8 @@ Route::get('posts/{post}/comment', [PostController::class, 'comment']);
 Route::post('posts/{post}/comments', [PostController::class, 'comments']);
  
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
-
-
 Route::get('admin-edit', [PostController::class,'']);
+Route::get('/search', [PostController::class, 'search']);
 
 //comment
 //Route::get('/comment', [CommentController::class, 'index']);
@@ -92,7 +96,3 @@ Route::get('admin-edit', [PostController::class,'']);
 // Route::get('/blogs', [BlogController::class, 'index']);
 // Route::get('/blogs/create', [BlogController::class, 'create']);
 // Route::post('/blogs/store', [BlogController::class, 'store'])->name('blogs.store');
-
-//make user as admin
-Route::get('user/{user}/edit', [AuthController::class, 'edit']);
-Route::post('user/{user}', [AuthController::class, 'update']);

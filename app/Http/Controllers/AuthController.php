@@ -21,6 +21,11 @@ class AuthController extends Controller
     public function index(){
         return view('auth.signin');
     }
+    public function search(Request $request){
+        $search = $request->get('search');
+        $user = DB::table('user')->where('name', 'like', '%'.$search.'%')->paginate(5);
+        return view('show', ['user' => $user]);
+    }
 
     public function createSignin(Request $request){
         $request->validate([

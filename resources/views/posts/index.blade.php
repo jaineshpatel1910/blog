@@ -189,11 +189,23 @@
                 <div id="page-right-content">
                     
                 <div class="container">
-                        <div class="row">
+                <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="header-title m-t-0 m-b-20">Blogs</h4>
+                                <form action="/search" method="GET" role="search">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <div class="input-group m-t-10">
+                                            <input type="search" name="search" method="GET" class="form-control" placeholder="Search">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div> <!-- form-group -->
+                                </form>
                             </div>
                         </div>
+
                         <a href="posts/create" class="btn btn-primary mb-2">Create Post</a>
                         <br>
                         <div class="row">

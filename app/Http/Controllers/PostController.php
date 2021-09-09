@@ -23,6 +23,14 @@ class PostController extends Controller
         return view('posts.create');
     }
 
+    public function search(Request $request){
+        $search = $request->get('search');
+        $posts = DB::table('posts')->where('title', 'like', '%'.$search.'%')->paginate(5);
+        return view('posts.index', ['posts' => $posts]);
+        // return view('posts.admin-blog', ['posts' => $posts]);
+        // return view('posts.posts_view', ['posts' => $posts]);
+    }
+
     public function store(Request $request){
         $request->validate([
             'title' => 'required',
