@@ -64,24 +64,125 @@
                                 <li><a href="#">Contact</a></li> -->
                             </ul>
 
-                            <!-- Top nav Right menu -->
+                            
+
+
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                              
                                 <li class="dropdown top-menu-item-xs">
-                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/app.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="#" data-target="#" class="dropdown-toggle menu-right-item" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="mdi mdi-bell"></i> <span class="label label-danger">3</span>
+                                    </a>
+                                    <ul class="dropdown-menu p-0 dropdown-menu-lg">
+                                        <!--<li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>-->
+                                        <li class="list-group notification-list" style="height: 267px;">
+                                           <div class="slimscroll">
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-diamond bg-primary"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-cog bg-warning"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">New settings</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-bell-o bg-custom"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">Updates</h5>
+                                                        <p class="m-0">
+                                                            <small>There are <span class="text-primary font-600">2</span> new updates available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-user-plus bg-danger"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">New user registered</h5>
+                                                        <p class="m-0">
+                                                            <small>You have 10 unread messages</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                                <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-diamond bg-primary"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-cog bg-warning"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">New settings</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+                                           </div>
+                                        </li>
+                                        <!--<li>-->
+                                            <!--<a href="javascript:void(0);" class="list-group-item text-right">-->
+                                                <!--<small class="font-600">See all notifications</small>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown top-menu-item-xs">
+                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-3.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/view"><i class="ti-user m-r-10"></i> Profile</a></li>
                                         <li class="divider"></li>
                                         <li><a href="/logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
                                     </ul>
-                                </li>
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
-                                <li class="hidden-xs">
-                                    <form role="search" class="navbar-left app-search pull-left">
-                                         <input type="text" placeholder="Search..." class="form-control">
-                                         <a href="#"><i class="fa fa-search"></i></a>
-                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -152,7 +253,7 @@
                                 </li> -->
 
                                 <li>
-                                    <a href="/chat" aria-expanded="true"><i class="ti-share"></i> Chat </a>
+                                    <a href="/chat" aria-expanded="true"><i class="mdi mdi-wechat"></i> Chat </a>
                                     <!-- <ul class="nav-second-level nav" aria-expanded="true">
                                         <li><a href="javascript: void(0);">Level 1.1</a></li>
                                         <li><a href="javascript: void(0);" aria-expanded="true">Level 1.2 <span class="fa arrow"></span></a>
@@ -163,6 +264,9 @@
                                         </li>
                                     </ul> -->
                                 </li>
+                                <li>
+                                    <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
+                                </li>
                             </ul>
                         </div>
                     </div><!--Scrollbar wrapper-->
@@ -172,47 +276,90 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="header-title m-t-0 m-b-20">My Profile</h4>
+                                <h3 class="header-title m-t-0 m-b-20">My Profile</h3>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box">
-                                    <div class="m-t-0">
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-hover mails m-0 table table-actions-bar">
-                                            <thead>
-                                                <tr>
-                                                    <th>Attribute</th>
-                                                    <th>Value</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($user as $user)
-                                                    <tr>
-                                                        <td>Id</td>
-                                                        <td>{{ $user->id }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Name</td>
-                                                        <td>{{ $user->name }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Email</td>
-                                                        <td>{{ $user->email }}</td>
-                                                    </tr>
-                                                
-                                                    <tr>
-                                                        <td>Phone Number</td>
-                                                        <td>{{ $user->phone_number }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            
+                                <div class="col-md-12">
+                                    <div class="p-0 text-center">
+                                        <div class="member-card">
+                                            <div class="thumb-xl member-thumb m-b-10 center-block">
+                                                <img src="assets/images/users/avatar-3.jpg" class="img-circle img-thumbnail" alt="profile-image">
+                                                <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+                                            </div>
+                                            <!-- <div class="">
+                                                <h4 class="m-b-5"></h4>
+                                                <p class="text-muted">@webdesigner</p>
+                                            </div> -->
+                                            <!-- <p class="text-muted m-t-10">
+                                                Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                                            </p> -->
+                                            <button type="button" class="btn btn-primary m-t-10">Follow</button>
+                                            <button type="button" class="btn btn-custom m-t-10">Message</button>
+
+                                        </div>
+
+                                    </div> <!-- end card-box -->
+
                                 </div>
-                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            @foreach ($user as $user)
+                                <div class="col-md-4">
+                                            <!-- Personal-Information -->
+                                            <div class="panel panel-default panel-fill">
+                                                <div class="panel-heading">
+                                                    <h4>Personal Information</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="m-b-20">
+                                                        <strong>Full Name</strong>
+                                                        <br>
+                                                        <p class="text-muted">{{ $user->name }}</p>
+                                                    </div>
+                                                    <div class="m-b-20">
+                                                        <strong>Email</strong>
+                                                        <br>
+                                                        <p class="text-muted">{{ $user->email }}</p>
+                                                    </div>
+                                                    <div class="m-b-20">
+                                                        <strong>Mobile</strong>
+                                                        <br>
+                                                        <p class="text-muted">{{ $user->phone_number }}</p>
+                                                    </div>
+                                                    <div class="about-info-p m-b-0">
+                                                        <strong>Location</strong>
+                                                        <br>
+                                                        <p class="text-muted">USA</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Personal-Information -->
+
+                                            <!-- Social -->
+                                            <div class="panel panel-default panel-fill">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Social</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <ul class="social-links list-inline m-b-0">
+                                                        <li>
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- Social -->
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 

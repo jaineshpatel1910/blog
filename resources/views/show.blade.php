@@ -77,23 +77,125 @@
                             </ul>
 
 
+                            
+
+
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
+                                
                                 <li class="dropdown top-menu-item-xs">
-                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/app.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="#" data-target="#" class="dropdown-toggle menu-right-item" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="mdi mdi-bell"></i> <span class="label label-danger">3</span>
+                                    </a>
+                                    <ul class="dropdown-menu p-0 dropdown-menu-lg">
+                                        <!--<li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>-->
+                                        <li class="list-group notification-list" style="height: 267px;">
+                                           <div class="slimscroll">
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-diamond bg-primary"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-cog bg-warning"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">New settings</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-bell-o bg-custom"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">Updates</h5>
+                                                        <p class="m-0">
+                                                            <small>There are <span class="text-primary font-600">2</span> new updates available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-user-plus bg-danger"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">New user registered</h5>
+                                                        <p class="m-0">
+                                                            <small>You have 10 unread messages</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                                <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-diamond bg-primary"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+
+                                               <!-- list item-->
+                                               <a href="javascript:void(0);" class="list-group-item">
+                                                  <div class="media">
+                                                     <div class="media-left p-r-10">
+                                                        <em class="fa fa-cog bg-warning"></em>
+                                                     </div>
+                                                     <div class="media-body">
+                                                        <h5 class="media-heading">New settings</h5>
+                                                        <p class="m-0">
+                                                            <small>There are new settings available</small>
+                                                        </p>
+                                                     </div>
+                                                  </div>
+                                               </a>
+                                           </div>
+                                        </li>
+                                        <!--<li>-->
+                                            <!--<a href="javascript:void(0);" class="list-group-item text-right">-->
+                                                <!--<small class="font-600">See all notifications</small>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown top-menu-item-xs">
+                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-3.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/view"><i class="ti-user m-r-10"></i> Profile</a></li>
                                         <li class="divider"></li>
                                         <li><a href="/logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
                                     </ul>
-                                </li>
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
-                                <li class="hidden-xs">
-                                    <form action="" role="search" method="POST" class="navbar-left app-search pull-left">
-                                         <input type="text" name="" placeholder="Search..." class="form-control">
-                                         <a href="#"><i class="fa fa-search"></i></a>
-                                    </form>
                                 </li>
                             </ul>
                             
@@ -181,7 +283,7 @@
                                 </li> -->
 
                                 <li>
-                                    <a href="/chat" aria-expanded="true"><i class="ti-share"></i> Chat </a>
+                                    <a href="/chat" aria-expanded="true"><i class="mdi mdi-wechat"></i> Chat </a>
                                     <!-- <ul class="nav-second-level nav" aria-expanded="true">
                                         <li><a href="javascript: void(0);">Level 1.1</a></li>
                                         <li><a href="javascript: void(0);" aria-expanded="true">Level 1.2 <span class="fa arrow"></span></a>
@@ -191,6 +293,9 @@
                                             </ul>
                                         </li>
                                     </ul> -->
+                                </li>
+                                <li>
+                                    <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
                                 </li>
                             </ul>
                         </div>
@@ -203,7 +308,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="header-title m-t-0 m-b-20">Users</h4>
+                                <h3 class="header-title m-t-0 m-b-20">Users</h3>
                                 <form action="/search" method="GET" role="search">
                                     {{ csrf_field() }}
                                     <div class="form-group">
@@ -264,20 +369,7 @@
                                         <br>
                                         <br>
 
-                                        <form action="{{ route('user.registration') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="switchery-demo">
-                                            <input type="hidden" name="is_admin" value="1">
-                                            <input type="checkbox" name="is_admin"  value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" />
-                                        </div>
-                                        <input class="btn btn-success" type="submit" value="Submit">
-
                                         
-                                        <!-- <div class="radio radio-success radio-single">
-                                            <input type="radio" value="1" name="is_admin" checked aria-label="Single radio Two">
-                                            <label>Make Admin</label>
-                                        </div> -->
-                                        </form>
 
                                         <ul class="social-links list-inline m-t-30">
                                             <li>

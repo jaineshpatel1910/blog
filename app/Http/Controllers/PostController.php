@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Comment;
 use DB;
 use Session;
@@ -10,6 +11,11 @@ use Validator;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Notifications\NewPostNotify;
+use Illuminate\Support\Facades\Notification;
+use App\Model\user\Subscriber;
+use Illuminate\Notifications\Notifiable;
 
 
 class PostController extends Controller
@@ -22,6 +28,42 @@ class PostController extends Controller
     public function create(){
         return view('posts.create');
     }
+
+    public function myNotification($type)
+    {
+        switch ($type) {
+            case 'message':
+                alert()->message('Sweet Alert with message.');
+                break;
+            case 'basic':
+                alert()->basic('Sweet Alert with basic.','Basic');
+                break;
+            case 'info':
+                alert()->info('Sweet Alert with info.');
+                break;
+            case 'success':
+                alert()->success('Sweet Alert with success.','Welcome to ItSolutionStuff.com')->autoclose(5000);
+                break;
+            case 'error':
+                alert()->error('Sweet Alert with error.');
+                break;
+            case 'warning':
+                alert()->warning('Sweet Alert with warning.');
+                break;
+            default:
+                # code...
+                break;
+        }
+        return view('my-notification');
+    }
+
+    // public function notification(Request $request, Post $posts){
+    //     $user = User::all();
+    //     foreach($user as $user){
+    //         Notification::route('mail', $user->email)->notify(new NewPostNotify($posts));
+    //         return redirect()->back();
+    //     }
+    // }
 
     public function search(Request $request){
         $search1 = $request->get('search1');

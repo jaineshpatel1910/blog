@@ -9,6 +9,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PusherNotificationController;
+use App\Http\Controllers\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +90,37 @@ Route::post('posts/{post}/comments', [PostController::class, 'comments']);
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
 Route::get('admin-edit', [PostController::class,'']);
 Route::get('/search1', [PostController::class, 'search']);
+
+//notification
+//Route::get('/notify', [PostController::class, 'notification']);
+
+//
+Route::get('my-notification/{type}', [PostController::class, 'myNotification']);
+
+//notification controller
+Route::get('/send-notification', [NotificationController::class, 'sendOfferNotification']);
+
+//notification
+Route::get('/notification', function(){
+    return view('notification');
+});
+Route::get('send', [PusherNotificationController::class, 'notification']);
+
+
+//
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});
+Route::get('/note', function () {
+    return view('home');
+});
+
+//ratings
+Route::get('post', [RatingController::class, 'posts'])->name('post');
+Route::post('post', [RatingController::class, 'postPost'])->name('posts.post');
+Route::get('post/{id}', [RatingController::class, 'show'])->name('posts.show');
+
 
 //comment
 //Route::get('/comment', [CommentController::class, 'index']);

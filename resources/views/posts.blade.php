@@ -10,6 +10,11 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!--Morris Chart CSS -->
@@ -20,7 +25,7 @@
         <!-- MetisMenu CSS -->
         <link href="assets/css/metisMenu.min.css" rel="stylesheet">
         <!-- Icons CSS -->
-        <link href="assets/css/icons.css" rel="stylesheet">
+        <link href="assets/css/icons.css" rel="stylesheet"> 
         <!-- Custom styles for this template -->
         <link href="assets/css/style.css" rel="stylesheet">
 
@@ -65,7 +70,6 @@
                             </ul>
 
                             
-
 
 
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
@@ -195,33 +199,22 @@
 
             <!-- Page content start -->
             <div class="page-contentbar">
-
-                <!--left navigation start-->
-                <aside class="sidebar-navigation">
+                <!-- <aside class="sidebar-navigation">
                     <div class="scrollbar-wrapper">
                         <div>
                             <button type="button" class="button-menu-mobile btn-mobile-view visible-xs visible-sm">
                                 <i class="mdi mdi-close"></i>
                             </button>
-                            <!-- User Detail box -->
                             
-                            <!--- End User Detail box -->
-
-                            <!-- Left Menu Start -->
                             <ul class="metisMenu nav" id="side-menu">
-                                <li><a href="/admin-dashboard"><i class="ti-home"></i> Dashboard </a></li>
+                                <li><a href="/dashboard"><i class="ti-home"></i> Dashboard </a></li>
 
-                                <!-- <li><a href="ui-elements.html"><span class="label label-custom pull-right">11</span> <i class="ti-paint-bucket"></i> UI Elements </a></li> -->
 
                                 <li>
-                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs <span class="fa arrow"></span></a>
-                                    <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="/home">Create Blogs</a></li>
-                                        <li><a href="/admin-blog">Blogs</a></li>
-                                    </ul>
+                                    <a href="/posts-view" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs </a>
+                                    
                                 </li>
 
-                                <!-- <li><a href="typography.html"><i class="ti-spray"></i> Typography </a></li> -->
 
                                 <li>
                                     <a href="javascript: void(0);" aria-expanded="true"><i class="ti-pencil-alt"></i> Forms <span class="fa arrow"></span></a>
@@ -231,110 +224,55 @@
                                     </ul>
                                 </li>
 
-                                <!-- <li>
-                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-menu-alt"></i> Tables <span class="fa arrow"></span></a>
-                                    <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="tables-basic.html">Basic tables</a></li>
-                                        <li><a href="tables-advanced.html">Advanced tables</a></li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li><a href="charts.html"><span class="label label-custom pull-right">5</span> <i class="ti-pie-chart"></i> Charts </a></li>
-
-                                <li><a href="maps.html"><i class="ti-location-pin"></i> Maps </a></li> -->
-
-                                <li>
-                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-files"></i> View<span class="fa arrow"></span></a>
-                                    <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="/show">Users</a></li>
-                                        <li><a href="/view-comments">Comments</a></li>
-                                        <!-- <li><a href="pages-lock-screen.html">Lock-screen</a></li>
-                                        <li><a href="pages-blank.html">Blank page</a></li>
-                                        <li><a href="pages-404.html">Error 404</a></li>
-                                        <li><a href="pages-confirm-mail.html">Confirm Mail</a></li>
-                                        <li><a href="pages-session-expired.html">Session Expired</a></li> -->
-                                    </ul>
-                                </li>
-
-                                <!-- <li>
-                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-widget"></i> Extra Pages <span class="fa arrow"></span></a>
-                                    <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="extras-timeline.html">Timeline</a></li>
-                                        <li><a href="extras-invoice.html">Invoice</a></li>
-                                        <li><a href="extras-profile.html">Profile</a></li>
-                                        <li><a href="extras-calendar.html">Calendar</a></li>
-                                        <li><a href="extras-faqs.html">FAQs</a></li>
-                                        <li><a href="extras-pricing.html">Pricing</a></li>
-                                        <li><a href="extras-contacts.html">Contacts</a></li>
-                                    </ul>
-                                </li> -->
+                                
 
                                 <li>
                                     <a href="/chat" aria-expanded="true"><i class="mdi mdi-wechat"></i> Chat </a>
-                                    <!-- <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="javascript: void(0);">Level 1.1</a></li>
-                                        <li><a href="javascript: void(0);" aria-expanded="true">Level 1.2 <span class="fa arrow"></span></a>
-                                            <ul class="nav-third-level nav" aria-expanded="true">
-                                                <li><a href="javascript: void(0);">Level 2.1</a></li>
-                                                <li><a href="javascript: void(0);">Level 2.2</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul> -->
+                                    
                                 </li>
                                 <li>
                                     <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
                                 </li>
                             </ul>
                         </div>
-                    </div><!--Scrollbar wrapper-->
-                </aside>
-                <!--left navigation end-->
-
-                <!-- START PAGE CONTENT -->
+                    </div>
+                </aside> -->
                 <div id="page-right-content">
+
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="header-title m-t-0 m-b-20">Comments</h3>
+                                <h3 class="header-title m-t-0 m-b-20">Ratings</h3>
                             </div>
                         </div>
-
-
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box">
-                                    
-                                    <div class="table-responsive">
-                                        <table class="table table-hover mails m-0 table table-actions-bar">
-                                            <thead>
-                                                <tr>
-                                                    <th>User Id</th>
-                                                    <th>Post Id</th>
-                                                    <th>Comment</th>
-                                                    <th>Created at</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                @foreach ($comments as $comment)
-                                                    <tr>
-                                                        <td>{{ $comment->user_id }}</td>
-                                                        <td>{{ $comment->post_id }}</td>
-                                                        <td>{{ $comment->body }}</td> 
-                                                        <td>{{ $comment->created_at }}</td> 
-
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                            @foreach ($posts as $post)
+                                <div class="col-lg-4">
+                                    <div class="panel panel-color panel-primary">
+                                        <div class="panel-heading">
+                                            <h4>{{ $post->title }}</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                        <h4><p>{{ $post->body }}</p></h4>
+                                        <h4><p>
+                                                Category:
+                                                <span class="btn btn-sm btn-success">{{ $post->category }}</span>
+                                            </p></h4>
+                                            <p>
+                                                <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $post->averageRating }}" data-size="xs" disabled="">
+                                            </p>
+                                            <br>
+                                        <p><a href="{{ route('posts.show',$post->id) }}" class="btn btn-primary">View</a></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-
+                        
+                        
 
                     </div>
-                    <!-- end container -->
+                    
 
                     <div class="footer">
                         <div class="pull-right hidden-xs">
@@ -371,6 +309,9 @@
 
         <!-- App Js -->
         <script src="assets/js/jquery.app.js"></script>
+        <script type="text/javascript">
+            $("#input-id").rating();
+        </script>
 
     </body>
 
