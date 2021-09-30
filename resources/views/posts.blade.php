@@ -15,19 +15,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
         <!--Morris Chart CSS -->
-		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
+		<link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}">
 
         <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- MetisMenu CSS -->
-        <link href="assets/css/metisMenu.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/metisMenu.min.css') }}" rel="stylesheet">
         <!-- Icons CSS -->
-        <link href="assets/css/icons.css" rel="stylesheet"> 
+        <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet"> 
         <!-- Custom styles for this template -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     </head>
 
@@ -43,8 +43,8 @@
                 <div class="topbar-left">
                     <div class="">
                         <a href="" class="logo">
-                            <img src="assets/images/logo_sm.png" alt="logo" class="logo-lg" /> BlogNet
-                            <img src="assets/images/logo_sm.png" alt="logo" class="logo-sm hidden" />
+                            <img src="{{ asset('assets/images/logo_sm.png') }}" alt="logo" class="logo-lg" /> BlogNet
+                            <img src="{{ asset('assets/images/logo_sm.png') }}" alt="logo" class="logo-sm hidden" />
                         </a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
 
                             <!-- Top nav left menu -->
                             <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
-                                <li><a href="/">Home</a></li>
+                                <li><a href="/homepage">Home</a></li>
                                 <!-- <li><a href="#">Help</a></li>
                                 <li><a href="#">Contact</a></li> -->
                             </ul>
@@ -182,7 +182,7 @@
                                 </li>
 
                                 <li class="dropdown top-menu-item-xs">
-                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-3.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="#" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('assets/images/users/avatar-3.jpg') }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/view"><i class="ti-user m-r-10"></i> Profile</a></li>
                                         <li class="divider"></li>
@@ -199,7 +199,7 @@
 
             <!-- Page content start -->
             <div class="page-contentbar">
-                <!-- <aside class="sidebar-navigation">
+                <aside class="sidebar-navigation">
                     <div class="scrollbar-wrapper">
                         <div>
                             <button type="button" class="button-menu-mobile btn-mobile-view visible-xs visible-sm">
@@ -236,7 +236,7 @@
                             </ul>
                         </div>
                     </div>
-                </aside> -->
+                </aside>
                 <div id="page-right-content">
 
                     <div class="container">
@@ -246,7 +246,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($posts as $post)
+                            @foreach ($post as $post)
                                 <div class="col-lg-4">
                                     <div class="panel panel-color panel-primary">
                                         <div class="panel-heading">
@@ -256,21 +256,18 @@
                                         <h4><p>{{ $post->body }}</p></h4>
                                         <h4><p>
                                                 Category:
-                                                <span class="btn btn-sm btn-success">{{ $post->category }}</span>
+                                                <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                             </p></h4>
                                             <p>
                                                 <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $post->averageRating }}" data-size="xs" disabled="">
                                             </p>
                                             <br>
-                                        <p><a href="{{ route('posts.show',$post->id) }}" class="btn btn-primary">View</a></p>
+                                        <p><a href="post/{{$post->id}}/rate" class="btn btn-primary">View</a></p>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        
-                        
-
                     </div>
                     
 
@@ -295,20 +292,20 @@
 
 
         <!-- js placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery-2.1.4.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/metisMenu.min.js"></script>
-        <script src="assets/js/jquery.slimscroll.min.js"></script>
+        <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/metisMenu.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
 
         <!--Morris Chart-->
-		<script src="assets/plugins/morris/morris.min.js"></script>
-		<script src="assets/plugins/raphael/raphael-min.js"></script>
+		<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
+		<script src="{{ asset('assets/plugins/raphael/raphael-min.js') }}"></script>
 
         <!-- Dashboard init -->
-		<script src="assets/pages/jquery.dashboard.js"></script>
+		<script src="{{ asset('assets/pages/jquery.dashboard.js') }}"></script>
 
         <!-- App Js -->
-        <script src="assets/js/jquery.app.js"></script>
+        <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
         <script type="text/javascript">
             $("#input-id").rating();
         </script>

@@ -11,13 +11,15 @@ class RatingController extends Controller
 {
     public function posts()
     {
-        $posts = Post::all();
-        return view('posts',compact('posts'));
+        $post = Post::all();
+        $post = Post::select("posts.id","posts.title","posts.body","category.category_name")
+                ->join("category","category.id","=","posts.category_id")->get();
+        return view('posts',compact('post'));
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
+        
         $user = DB::table('user')->where('id',Auth::id())->get();
         return view('postsShow',compact('post'));
     }
@@ -30,6 +32,5 @@ class RatingController extends Controller
         $rating->rating = $request->rate;
         $rating->user_id = auth()->user()->id;
         $post->ratings()->save($rating);
-        return redirect()->route("dashboard");
     }
 }

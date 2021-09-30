@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Category;
 use DB;
 use Session;
 use Validator;
@@ -20,13 +21,16 @@ use Illuminate\Notifications\Notifiable;
 
 class PostController extends Controller
 {
-    public function index(){
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
+    public function index(Post $post, Category $category){
+        $category = Category::all();
+        $post = Post::select("posts.id","posts.title","posts.body","category.category_name")
+                ->join("category","category.id","=","posts.category_id")->get();  
+        return view('posts.index', compact('post','category'));
     }
 
-    public function create(){
-        return view('posts.create');
+    public function create(Category $category, Post $post){
+        $category = Category::all();
+        return view('posts.create',compact('post', 'category'));
     }
 
     public function myNotification($type)
@@ -57,56 +61,64 @@ class PostController extends Controller
         return view('my-notification');
     }
 
-    // public function notification(Request $request, Post $posts){
-    //     $user = User::all();
-    //     foreach($user as $user){
-    //         Notification::route('mail', $user->email)->notify(new NewPostNotify($posts));
-    //         return redirect()->back();
-    //     }
-    // }
-
     public function search(Request $request){
         $search1 = $request->get('search1');
-        $posts = DB::table('posts')->where('title', 'like', '%'.$search1.'%')->paginate(5);
-        return view('posts.index', ['posts' => $posts]);
-        // return view('posts.admin-blog', ['posts' => $posts]);
-        // return view('posts.posts_view', ['posts' => $posts]);
+        $post = DB::table('posts')->where('title', 'like', '%'.$search1.'%')->orWhere('body', 'like', '%'.$search1.'%')->paginate(5);
+        return view('posts.index', compact('post'), ['posts' => $post]);
     }
 
     public function store(Request $request){
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'category' => 'required',
+            'category_id' => '',
         ]);
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->category = $request->category;
+        $post->category_id = $request->category_id;
+        $post->created_by = auth()->user()->id;
         $post->save();
         return redirect('/home')->with('success','Post created successfully!');
     }
+    
     public function blog(){
-        $posts = DB::table('posts')->get();
-        return view('posts.admin-blog', compact('posts'));
+        $post = DB::table('posts')->get();
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+        ->join("category","category.id","=","posts.category_id")->get();
+        return view('posts.admin-blog', compact('post'));
     }
     
 
     public function edit(Post $post){
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact('post'), ['posts' => $post]);
     }
 
     public function view(){
-        $posts = DB::table('posts')->get();
-        return view('posts.posts_view', compact('posts'));
+        $category = Category::all();
+        $post = DB::table('posts')->get();
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+                ->join("category","category.id","=","posts.category_id")->get();
+        return view('posts.posts_view', compact('post','category'), ['posts' => $post, 'category' => $category]);
     }
 
+    public function searchblog(Request $request){
+        $searchblog = $request->get('searchblog');
+        $post = DB::table('posts')->where('title', 'like', '%'.$searchblog.'%')->orWhere('body', 'like', '%'.$searchblog.'%')->paginate(5);
+        return view('posts.posts_view', compact('post'), ['posts' => $post]);
+    }
+
+    public function category(Request $request, Post $post){
+        $categorysearch = $request->get('categorysearch');
+        $category = DB::table('category')->where('category_name', 'like', '%'.$categorysearch.'%')->paginate(5);
+        return view('posts.index', compact('category', 'post'), ['category' => $category, 'post' => $post]);
+    }
 
     public function show(Request $comments, Post $post){
         $user = DB::table('user')->where('id',Auth::id())->get();
-        $comments = DB::table('comments')->where('user_id', Auth::id())->get();  
+        $comments = DB::table('comments')->where('user_id', Auth::id())->get();
         $comments = DB::table('comments')->where('post_id', $post->id)->get();
-        return view('posts.show', compact('post','comments'), ['comments' => $comments, 'user' => $user, 'posts' => $post]);
+        return view('posts.show', compact('post','comments', 'user'), ['comments' => $comments, 'user' => $user, 'posts' => $post]);
     }
 
     public function comment(Request $comments, Post $post)
@@ -141,11 +153,9 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'category' => 'required',
         ]);
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->category = $request->category;
         $post->save();
         return redirect('/home')->with('success','Post updated successfully!');
     }

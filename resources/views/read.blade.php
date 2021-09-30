@@ -1,15 +1,14 @@
-@extends('layouts.home')
+@extends('layouts.welcome')
 
 @section('content')
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <br>
-                                <h3 class="header-title m-t-0 m-b-20">Home Page</h3>
+                                <h3 class="header-title m-t-0 m-b-20">Read more</h3>
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($post as $post)
                                 <div class="col-lg-4">
                                     <div class="panel panel-color panel-primary">
                                         <div class="panel-heading">
@@ -18,15 +17,13 @@
                                         <div class="panel-body">
                                             <p>{{ $post->body }}</p>
                                             <p>
-                                                Category:
-                                                <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
+                                                By:
+                                                <span class="btn btn-sm btn-success">{{ $post->name }}</span>
                                             </p>
                                             <br>
-                                            <!-- <a href="read/{{$post->id}}" class="btn btn-primary mb-2">Read more</a> -->
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
                         </div>
                     </div>
                     <!-- end container -->

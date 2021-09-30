@@ -40,9 +40,13 @@
                                 </div>
                                 <br>
                                 <div class="account-content">
-                                    @if (session('success'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('success') }}
+                                    @if(session('errors'))
+                                        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <i class="mdi mdi-block-helper"></i>
+                                            <strong>Invalid Credentials!!</strong>
                                         </div>
                                     @endif
 

@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 
 <div class="container">
     <div class="row justify-content-center">
@@ -10,27 +7,21 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Title</th>
-                        <th>Body</th>
                         <th>Category</th>
+                        <th>Created By</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($blogs as $blog)
+                    @foreach($category as $category)
                         <tr>
-                            <td>{{ $blog->id }}</td>
-                            <td>{{ $blog->title }}</td>
-                            <td>{{ $blog->body }}</td>
-                            <td>{{ $blog->category }}</td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->category_name }}</td>
+                            <td>{{ $category->created_by }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <a href='/dashboard'> Click Here</a> to go back
+            <a href='/category'> Click Here</a> to go back
         </div> 
     </div>
 </div>
-    
-    
-
-@endsection

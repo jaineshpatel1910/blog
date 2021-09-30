@@ -29,10 +29,10 @@
 <body>
 
         <div id="page-wrapper">
-            @include('layouts.header')
+            @include('layouts.adminheader')
            
             <div class="page-contentbar">
-                @include('layouts.sidebar')
+                @include('layouts.adminsidebar')
                 <div id="page-right-content">
                     @yield('content')
 

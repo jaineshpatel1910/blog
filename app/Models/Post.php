@@ -11,9 +11,9 @@ class Post extends Model
 {
     use Rateable;
     use HasFactory;
-    use SoftDeletes;
+    
     protected $table = 'posts';
-    protected $fillable = ['title', 'body', 'category'];
-    protected $dates = ['deleted_at'];
-
+    protected $fillable = ['title', 'body', 'category_id', 'created_by'];
+    
+    
 }

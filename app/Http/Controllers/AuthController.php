@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 use Session;
 use Hash;
 use DB;
@@ -14,8 +15,21 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function blog(){
+        $post = Post::all();
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+        ->join("category","category.id","=","posts.category_id")->get();
+        return view('home', compact('post'));
+    }
+
+    public function read(Post $post, User $user){
+        return view('read', compact('post'));
+    }
+
+    public function admin(){
         $posts = Post::all();
-        return view('welcome', compact('posts'));
+        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+        ->join("category","category.id","=","posts.category_id")->get(); 
+        return view('adminhome', compact('posts'));
     }
 
     public function index(){
@@ -34,10 +48,11 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)){
-            return redirect()->intended('dashboard')
-            ->withSuccess('Logged-in');
+            
+            return redirect()->intended('dashboard')->withSuccess('Logged-in');
+            
         }
-        return redirect("login")->withSuccess('Invalid Credentials');
+        return redirect("login")->withErrors('Invalid Credentials!!');
     }
 
     public function signup(){
@@ -67,7 +82,7 @@ class AuthController extends Controller
     }
 
     public function edit(User $user){
-        return view('user.edit', compact('user'));
+        return view('user.edit', compact('user'), ['user' => $user]);
     }
 
     public function update(User $user, Request $request){
@@ -78,34 +93,26 @@ class AuthController extends Controller
         $user->save();
     }
 
-    // public function dashboardView(){
-    //     if (Auth::check()){
-    //         return view('auth.dashboard');
-    //     }
-    //     return redirect("login")->withSuccess('You dont have Access');
-    // }
+    
 
     public function dashboardView(Request $request){
+        // $user = DB::table('user')->where('id', Auth::id())->get();
         $user = DB::select('select * from user');
-        $comment = Comment::latest()->take(5)->get();
-        $posts = Post::latest()->take(5)->get();
+        $user = User::all();
 
-        //return DB::table('user')->count();
-        
-        // $name = $request->get('name');
-        // if($name != ""){
-        //     $user = User::where('name','LIKE','%'.$name.'%')->get();
-        //     if(count ( $user ) > 0){
-        //         return view('auth.admin_dashboard')->withDetails ( $user )->withQuery ( $name );
-        //     }
-        // }
-        // return view('auth.admin_dashboard')->withMesage("No data found!");
+        $posts = Post::latest()->take(5)->get();
+        $posts = Post::all();
+        $comment = Comment::all();
+
+        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+        ->join("category","category.id","=","posts.category_id")->get(); 
         
         if (Auth::user()->is_admin){
-            return view('auth.admin_dashboard', ['user' => $user,'comments' => $comment, 'posts' => $posts]);
+            return view('auth.admin_dashboard',  compact('posts'), ['user' => $user, 'comment' => $comment, 'posts' => $posts]);
         }
         else{
-            return view('auth.dashboard', ['user' => $user, 'posts' => $posts]);
+            
+            return view('auth.dashboard', compact('posts'), ['user' => $user, 'posts' => $posts]);
         }
         return redirect("login")->withSuccess('You dont have Access');
     }

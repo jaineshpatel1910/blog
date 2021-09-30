@@ -28,4 +28,10 @@ class ViewController extends Controller
         $comment = DB::select('select * from comments');
         return view('comments.view',['comments'=>$comment, 'posts'=>$post]);
     }
+
+    public function search(Request $request){
+        $searchchat = $request->get('searchchat');
+        $user = DB::table('user')->where('name', 'like', '%'.$searchchat.'%')->paginate(5);
+        return view('message.index', ['user' => $user]);
+    }
 }

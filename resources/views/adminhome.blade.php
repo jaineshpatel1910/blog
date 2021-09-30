@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.adminhome')
 
 @section('content')
                     <div class="container">
@@ -9,20 +9,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($post as $post)
+                            @foreach ($posts as $post)
                                 <div class="col-lg-4">
                                     <div class="panel panel-color panel-primary">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">{{ $post->title }}</h3>
                                         </div>
                                         <div class="panel-body">
-                                            <p>{{ $post->body }}</p>
-                                            <p>
-                                                Category:
-                                                <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
-                                            </p>
-                                            <br>
-                                            <!-- <a href="read/{{$post->id}}" class="btn btn-primary mb-2">Read more</a> -->
+                                        <p>{{ $post->body }}</p>
+                                        <p>
+                                            Category:
+                                            <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
+                                        </p>
+                                        
                                         </div>
                                     </div>
                                 </div>

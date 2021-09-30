@@ -22,8 +22,6 @@
         <!-- Custom styles for this template -->
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
-
-
     </head>
 
 <body>
@@ -32,8 +30,7 @@
             @include('layouts.header')
            
             <div class="page-contentbar">
-                @include('layouts.sidebar')
-                <div id="page-right-content">
+                
                     @yield('content')
 
                     <div class="footer">
@@ -44,11 +41,13 @@
                             <strong>Appstane</strong> - Copyright &copy;
                             <script>document.write(new Date().getFullYear())</script>
                         </div>
-                    </div>
-                </div>               
+                    </div> <!-- end footer -->                
+                <!-- End #page-right-content -->
             </div>
             <!-- end .page-contentbar -->
         </div>
+
+       
 
         <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

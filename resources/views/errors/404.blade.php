@@ -10,16 +10,16 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
         <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- MetisMenu CSS -->
-        <link href="assets/css/metisMenu.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/metisMenu.min.css') }}" rel="stylesheet">
         <!-- Icons CSS -->
-        <link href="assets/css/icons.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
         <!-- Custom styles for this template -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     </head>
 
@@ -36,14 +36,11 @@
 
                             <div class="m-t-40 card-box">
                                 <div class="text-center">
-                                    <h2 class="text-uppercase m-t-0 m-b-30">
-                                        
-                                    </h2>
-                                    <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
+                                    <h2 class="text-uppercase m-t-0 m-b-30"></h2>
                                 </div>
                                 <div class="account-content">
                                     <div class="text-center m-b-20">
-                                        <img src="assets/images/cancel.svg" title="invite.svg" height="80" class="m-t-10">
+                                        <img src="{{ asset('assets/images/cancel.svg') }}" title="invite.svg" height="80" class="m-t-10">
                                         <h3 class="expired-title">Page Not Found</h3>
                                         <p class="text-muted m-t-30 line-h-24"> It's looking like you may have taken a
                                             wrong turn. Don't worry... it
@@ -52,7 +49,7 @@
 
                                     <div class="row m-t-30">
                                         <div class="col-xs-12">
-                                            <a href="dashboard" class="btn btn-lg btn-primary btn-block" type="submit">Back to Home</a>
+                                            <a href="" class="btn btn-lg btn-primary btn-block" type="submit">Back to Home</a>
                                         </div>
                                     </div>
 
@@ -74,13 +71,13 @@
 
 
         <!-- js placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery-2.1.4.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/metisMenu.min.js"></script>
-        <script src="assets/js/jquery.slimscroll.min.js"></script>
+        <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/metisMenu.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
 
         <!-- App Js -->
-        <script src="assets/js/jquery.app.js"></script>
+        <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
 
     </body>
 
