@@ -15,5 +15,11 @@ class Post extends Model
     protected $table = 'posts';
     protected $fillable = ['title', 'body', 'category_id', 'created_by'];
     
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     
+    public function category(){
+        return $this->hasMany(Category::class);
+    }
 }

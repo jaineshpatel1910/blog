@@ -9,10 +9,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 
         <!--Morris Chart CSS -->
 		<link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}">
-
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- MetisMenu CSS -->
@@ -21,29 +25,19 @@
         <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
-
-
     </head>
 
 <body>
 
         <div id="page-wrapper">
             @include('layouts.adminheader')
-           
             <div class="page-contentbar">
                 @include('layouts.adminsidebar')
                 <div id="page-right-content">
                     @yield('content')
-
+                    
                     <div class="footer">
-                        <div class="pull-right hidden-xs">
-                            Project Completed <strong class="text-custom">38%</strong>.
-                        </div>
-                        <div>
-                            <strong>Appstane</strong> - Copyright &copy;
-                            <script>document.write(new Date().getFullYear())</script>
-                        </div>
+                        @include('layouts.footer')
                     </div>
                 </div>               
             </div>
@@ -55,8 +49,18 @@
         <script src="{{ asset('assets/js/metisMenu.min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
 
+        <!--Morris Chart-->
+		<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
+		<script src="{{ asset('assets/plugins/raphael/raphael-min.js') }}"></script>
+
+        <!-- Dashboard init -->
+		<script src="{{ asset('assets/pages/jquery.dashboard.js') }}"></script>
+
         <!-- App Js -->
         <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+        <script type="text/javascript">
+            $("#input-id").rating();
+        </script>
 
 </body>
 </html>

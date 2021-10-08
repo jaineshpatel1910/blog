@@ -13,6 +13,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PusherNotificationController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,19 +26,18 @@ use App\Http\Controllers\RatingController;
 |
 */
 
-Route::get('/', function (Post $post) {
-    $post = Post::all();
-    $post = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
+Route::get('/', function (Post $posts) {
+    $posts = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
                 ->join("category","category.id","=","posts.category_id")
-                ->join("user","user.id","=","posts.created_by")->get();
-    return view('welcome', compact('post'));
+                ->join("user","user.id","=","posts.created_by")->simplePaginate(4);
+    return view('welcome', compact('posts'));
 });
 //read more
-Route::get('read/{post}', [AuthController::class, 'read']);
+Route::get('/read/{post}', [AuthController::class, 'read']);
 
 //home page blog
-Route::get('homepage', [AuthController::class, 'blog']);
-Route::get('read/{post}', [AuthController::class, 'read']);
+Route::get('/homepage', [AuthController::class, 'blog']);
+Route::get('/read/{post}', [AuthController::class, 'read']);
 
 //admin-home page blog
 Route::get('/adminhome', [AuthController::class, 'admin']);
@@ -46,11 +46,23 @@ Route::get('/adminhome', [AuthController::class, 'admin']);
 // Route::get('/', [ChatController::class, 'index']);
 // Route::post('/store', [ChatController::class, 'store'])->name('store');
 
+// form to become blogger
+Route::get('/form', [FormController::class, 'form']);
+Route::post('/formstore', [FormController::class, 'formstore']);
+Route::post('/makeblogger/{user}/update', [FormController::class, 'edit']);
+Route::post('/makeblogger/{user}', [FormController::class, 'update']);
+
+//show request to admin
+Route::get('/request', [FormController::class, 'show']);
 
 //message to particular user
 Route::get('/chat', [MessageController::class, 'index']);
-Route::get('chat/{user}', [MessageController::class, 'show']);
+Route::get('/chat/{user}', [MessageController::class, 'show']);
 Route::post('chat/{user}/store', [MessageController::class, 'store']);
+
+
+//admin chat
+Route::get('/admin/chat', [MessageController::class, 'admin']);
 
 //Register and Login  
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -63,9 +75,11 @@ Route::get('/dashboard', [AuthController::class, 'dashboardView'])->name('dashbo
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //route for admin
 Route::get('/admin-dashboard', [AuthController::class, 'dashboardView']);
+
 //make user as admin
-Route::get('user/{user}/edit', [AuthController::class, 'edit']);
+Route::get('/user/{user}/edit', [AuthController::class, 'edit']);
 Route::post('user/{user}', [AuthController::class, 'update']);
+
 Route::get('/search', [AuthController::class, 'search']);
 
 
@@ -76,44 +90,47 @@ Route::get('/view-admin', [ViewController::class, 'admin']);
 //view partiular logged-in user
 Route::get('/view', [ViewController::class, 'index']);
 //view all users to admin
-Route::get('/show', [ViewController::class, 'show']);
+Route::get('/admin/show', [ViewController::class, 'show']);
 //search user in chat
 Route::get('/searchchat', [ViewController::class, 'search']);
 //view comments to admin
-Route::get('/view-comments', [ViewController::class, 'view']);
-
+Route::get('/admin/view-comments', [ViewController::class, 'view']);
 
 
 //posts CRUD
-Route::get('/home', [PostController::class, 'index'])->name('home');
-Route::get('posts/create', [PostController::class, 'create']);
+Route::get('/admin', [PostController::class, 'index'])->name('admin');
+Route::get('/admin/posts/create', [PostController::class, 'create']);
 Route::post('post/store', [PostController::class, 'store']);
-Route::get('posts/{post}/edit', [PostController::class, 'edit']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::post('posts/{post}', [PostController::class, 'update']);
 Route::get('/posts-view', [PostController::class, 'view']);
 
 //for admin dashboard-viewblog
 Route::get('/admin-blog', [PostController::class, 'blog']);
 
-Route::get('posts/{post}', [PostController::class, 'show']);
-Route::get('posts/{post}/comment', [PostController::class, 'comment']);
+Route::get('/posts/{post}', [PostController::class, 'show']);
+
+//admin show blog
+Route::get('/admin/posts/{post}', [PostController::class, 'showadmin']);
+
+Route::get('/posts/{post}/comment', [PostController::class, 'comment']);
 Route::post('posts/{post}/comments', [PostController::class, 'comments']);
- 
+
+
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
-Route::get('admin-edit', [PostController::class,'']);
-Route::get('/search1', [PostController::class, 'search']);
+Route::get('/admin/search1', [PostController::class, 'search']);
 
 //search blog in user panel
 Route::get('/searchblog', [PostController::class, 'searchblog']);
 
 //search by category
-Route::get('/category-search', [PostController::class, 'category']);
+Route::get('/admin/category-search', [PostController::class, 'category']);
 
 //notification
 //Route::get('/notify', [PostController::class, 'notification']);
 
 //
-Route::get('my-notification/{type}', [PostController::class, 'myNotification']);
+Route::get('/my-notification/{type}', [PostController::class, 'myNotification']);
 
 //notification controller
 Route::get('/send-notification', [NotificationController::class, 'sendOfferNotification']);
@@ -122,20 +139,23 @@ Route::get('/send-notification', [NotificationController::class, 'sendOfferNotif
 Route::get('/notification', function(){
     return view('notification');
 });
-Route::get('send', [PusherNotificationController::class, 'notification']);
+Route::get('/send', [PusherNotificationController::class, 'notification']);
 
 
 //ratings
-Route::get('post', [RatingController::class, 'posts'])->name('post');
+Route::get('/rate', [RatingController::class, 'posts'])->name('rate');
 Route::post('post', [RatingController::class, 'postPost'])->name('posts.post');
-Route::get('post/{post}/rate', [RatingController::class, 'show'])->name('posts.show');
+Route::get('/rate/{post}', [RatingController::class, 'show'])->name('posts.show');
 
+//admin rating
+Route::get('/admin/rate', [RatingController::class, 'adminposts']);
+Route::get('/admin/rate/{post}', [RatingController::class, 'adminshow']);
 
 //comment
 //Route::get('/comment', [CommentController::class, 'index']);
 //Route::post('posts/{post}/comments', [CommentController::class, 'store']);
 
 //create category
-Route::get('category', [CategoryController::class, 'index']);
-Route::get('category/create', [CategoryController::class, 'create']);
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/admin/category/create', [CategoryController::class, 'create']);
 Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');

@@ -11,25 +11,34 @@ use Session;
 use Hash;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 
 class AuthController extends Controller
 {
     public function blog(){
         $post = Post::all();
-        $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
-        ->join("category","category.id","=","posts.category_id")->get();
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
+        ->join("category","category.id","=","posts.category_id")
+        ->join("user","user.id","=","posts.created_by")->get();
         return view('home', compact('post'));
     }
 
-    public function read(Post $post, User $user){
-        return view('read', compact('post'));
+    public function read(Post $post, User $user, Category $category){
+        $category = Category::all();
+        // $post = Post::select('posts.title,posts.body,category.category_name FROM posts INNER JOIN category ON posts.id=category.id')->where('title', $post)->get();
+        // $post = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
+        // ->join("category","category.id","=","posts.category_id")
+        // ->join("user","user.id","=","posts.created_by")
+        // ->where('title', $post)->get();
+        return view('read', compact('post', 'user', 'category'),['user' => $user, 'post' => $post, 'category' => $category]);
     }
 
     public function admin(){
-        $posts = Post::all();
-        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
-        ->join("category","category.id","=","posts.category_id")->get(); 
-        return view('adminhome', compact('posts'));
+        $post = Post::all();
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
+        ->join("category","category.id","=","posts.category_id")
+        ->join("user","user.id","=","posts.created_by")->get(); 
+        return view('adminhome', compact('post'));
     }
 
     public function index(){
@@ -48,9 +57,7 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)){
-            
             return redirect()->intended('dashboard')->withSuccess('Logged-in');
-            
         }
         return redirect("login")->withErrors('Invalid Credentials!!');
     }
@@ -93,30 +100,24 @@ class AuthController extends Controller
         $user->save();
     }
 
-    
-
     public function dashboardView(Request $request){
-        // $user = DB::table('user')->where('id', Auth::id())->get();
-        $user = DB::select('select * from user');
         $user = User::all();
-
-        $posts = Post::latest()->take(5)->get();
-        $posts = Post::all();
+        $post = Post::all();
         $comment = Comment::all();
+        $blog = Post::latest()->take(10)->get();
 
-        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
-        ->join("category","category.id","=","posts.category_id")->get(); 
+        $users = User::simplePaginate(3, ['*'], 'users');
+        $posts = Post::simplePaginate(2, ['*'], 'posts');
+        $blogs = Post::latest()->simplePaginate(3, ['*'], 'blogs');
         
         if (Auth::user()->is_admin){
-            return view('auth.admin_dashboard',  compact('posts'), ['user' => $user, 'comment' => $comment, 'posts' => $posts]);
+            return view('auth.admin_dashboard', compact('blog', 'blogs','post', 'posts', 'user', 'users'), ['users' => $users, 'comment' => $comment, 'posts' => $posts]);
         }
         else{
-            
-            return view('auth.dashboard', compact('posts'), ['user' => $user, 'posts' => $posts]);
+            return view('auth.dashboard', compact('blog','post','posts', 'users'), ['users' => $users, 'comment' => $comment, 'posts' => $posts]);
         }
         return redirect("login")->withSuccess('You dont have Access');
     }
-
 
     public function logout(){
         Session::flush();

@@ -17,7 +17,7 @@
                                 <li>
                                     <a href="javascript: void(0);" aria-expanded="true"><i class="ti-light-bulb"></i> Blogs <span class="fa arrow"></span></a>
                                     <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="/home">Create Blogs</a></li>
+                                        <li><a href="/admin">Create Blogs</a></li>
                                         <li><a href="/admin-blog">Blogs</a></li>
                                     </ul>
                                 </li>
@@ -47,8 +47,8 @@
                                 <li>
                                     <a href="javascript: void(0);" aria-expanded="true"><i class="ti-files"></i> View<span class="fa arrow"></span></a>
                                     <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="/show">Users</a></li>
-                                        <li><a href="/view-comments">Comments</a></li>
+                                        <li><a href="/admin/show">Users</a></li>
+                                        <li><a href="/admin/view-comments">Comments</a></li>
                                         <!-- <li><a href="pages-lock-screen.html">Lock-screen</a></li>
                                         <li><a href="pages-blank.html">Blank page</a></li>
                                         <li><a href="pages-404.html">Error 404</a></li>
@@ -57,21 +57,8 @@
                                     </ul>
                                 </li>
 
-                                <!-- <li>
-                                    <a href="javascript: void(0);" aria-expanded="true"><i class="ti-widget"></i> Extra Pages <span class="fa arrow"></span></a>
-                                    <ul class="nav-second-level nav" aria-expanded="true">
-                                        <li><a href="extras-timeline.html">Timeline</a></li>
-                                        <li><a href="extras-invoice.html">Invoice</a></li>
-                                        <li><a href="extras-profile.html">Profile</a></li>
-                                        <li><a href="extras-calendar.html">Calendar</a></li>
-                                        <li><a href="extras-faqs.html">FAQs</a></li>
-                                        <li><a href="extras-pricing.html">Pricing</a></li>
-                                        <li><a href="extras-contacts.html">Contacts</a></li>
-                                    </ul>
-                                </li> -->
-
                                 <li>
-                                    <a href="/chat" aria-expanded="true"><i class="mdi mdi-wechat"></i> Chat </a>
+                                    <a href="/admin/chat" aria-expanded="true"><i class="mdi mdi-wechat"></i> Chat </a>
                                     <!-- <ul class="nav-second-level nav" aria-expanded="true">
                                         <li><a href="javascript: void(0);">Level 1.1</a></li>
                                         <li><a href="javascript: void(0);" aria-expanded="true">Level 1.2 <span class="fa arrow"></span></a>
@@ -83,7 +70,11 @@
                                     </ul> -->
                                 </li>
                                 <li>
-                                    <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
+                                    <a href="/admin/rate" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
+                                </li>
+
+                                <li>
+                                    <a href="/request" aria-expanded="true"><i class="mdi mdi-bell-ring"></i> Requests </a>
                                 </li>
                             </ul>
                         </div>

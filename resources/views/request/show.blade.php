@@ -3,8 +3,8 @@
 @section('content')
                     <div class="container">
                         <div class="row">
-                            <h3 class="header-title m-t-0 m-b-20">Users</h3>
-                            <div class="col-sm-4">
+                            <h3 class="header-title m-t-0 m-b-20">Requests</h3>
+                            {{-- <div class="col-sm-4">
                                 <form action="/search" method="GET" role="search">
                                     <div class="form-group">
                                         <div class="input-group m-t-10">
@@ -13,26 +13,16 @@
                                                 <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                             </span>
                                         </div>
-                                    </div> <!-- form-group -->
+                                    </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
-                            @foreach ($user as $user)
+                            @foreach ($form as $form)
                             <div class="col-md-4">
                                 <div class="text-center card-box">
-                                    <!-- <div class="dropdown pull-right">
-                                        <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <h3 class="m-0 text-muted"><i class="mdi mdi-dots-horizontal"></i></h3>
-                                        </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Delete</a></li>
-                                        </ul>
-                                    </div> -->
-                                    <div class="clearfix"></div>
                                     <div class="member-card">
-                                        
                                         <div class="thumb-xl member-thumb m-b-10 center-block">
                                         
                                             <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" class="img-circle img-thumbnail" alt="profile-image">
@@ -40,14 +30,33 @@
                                             <i class="mdi mdi-information-outline member-star text-success" title="verified user"></i>
                                         </div>
                                         <div class="">
-                                            <td>{{ $user->name }}</td>
+                                            <td> ID: {{ $form->id }}</td>
                                             <br>
-                                            <td>{{ $user->email }}</td>
+                                            <td> Name: {{ $form->name }}</td>
+                                            <br>
+                                            <td> Type of Blog: {{ $form->type_of_blog }}</td>
+                                            <br>
+                                            <td>Experience: {{ $form->experience }}</td>
                                         </div>
-                                        
-                                        <a href="/admin/chat" class="btn btn-default btn-sm m-t-10">Message</a>
-                                        <a href="/user/{{$user->id}}/edit" class="btn btn-default btn-sm m-t-10">Edit</a>
+
                                         <br>
+                                        <form action="/makeblogger/{{ $form->id }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="is_admin" value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" />
+                                            
+                                            <button type="submit" class="btn btn-success btn-bordered">Accept</button>
+                                            
+                                        </form>
+                                        <br>
+                                        <form action="/makeblogger/{{ $user->id }}/update" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="accepted" value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" />
+                                            
+                                            <button type="submit" class="btn btn-danger btn-bordered">Reject</button>
+                                        </form>
+
+                                        {{-- <a href="/makeblogger/{{ $form->id }}/edit" class="btn btn-default btn-sm m-t-10">Edit</a>
+                                        <a href="/makeblogger/{{ $form->id }}/edit" class="btn btn-default btn-sm m-t-10">Edit</a> --}}
                                         <br>
 
                                         <ul class="social-links list-inline m-t-30">

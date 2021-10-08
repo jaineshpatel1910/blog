@@ -9,7 +9,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($post as $post)
+                            @foreach ($posts as $post)
                                 <div class="col-lg-4">
                                     <div class="panel panel-color panel-primary">
                                         <div class="panel-heading">
@@ -29,13 +29,12 @@
                                             <a href="read/{{$post->id}}" class="btn btn-primary mb-2">Read more</a>
                                             <br>
                                             <br>
-                                            <!-- <a href="login" class="btn btn-primary mb-2">Comment</a> -->
-
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                        {{$posts->links()}}
                     </div>
                     <!-- end container -->
 @endsection

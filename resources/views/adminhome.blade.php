@@ -9,7 +9,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($posts as $post)
+                            @foreach ($post as $post)
                                 <div class="col-lg-4">
                                     <div class="panel panel-color panel-primary">
                                         <div class="panel-heading">
@@ -21,7 +21,10 @@
                                             Category:
                                             <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                         </p>
-                                        
+                                        <p>
+                                            By:
+                                            <span class="btn btn-sm btn-success">{{ $post->name }}</span>
+                                        </p>
                                         </div>
                                     </div>
                                 </div>

@@ -31,9 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-
                         <div class="wrapper-page">
-
                             <div class="m-t-40 card-box">
                                 <div class="text-center">
                                     <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>

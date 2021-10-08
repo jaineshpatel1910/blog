@@ -31,10 +31,7 @@
                                 <!-- <li><a href="#">Help</a></li>
                                 <li><a href="#">Contact</a></li> -->
                             </ul>
-
                             
-
-
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
                                 
                                 <li class="dropdown top-menu-item-xs">

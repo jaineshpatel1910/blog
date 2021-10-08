@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Category;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Session;
 use Validator;
 use Carbon\Carbon;
@@ -17,15 +17,15 @@ use App\Notifications\NewPostNotify;
 use Illuminate\Support\Facades\Notification;
 use App\Model\user\Subscriber;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
 {
     public function index(Post $post, Category $category){
         $category = Category::all();
-        $post = Post::select("posts.id","posts.title","posts.body","category.category_name")
-                ->join("category","category.id","=","posts.category_id")->get();  
-        return view('posts.index', compact('post','category'));
+        $posts = Post::select("posts.id","posts.title","posts.body","category.category_name")
+                ->join("category","category.id","=","posts.category_id")->get();
+        return view('posts.index', compact('posts','category'), ['posts' => $posts]);
     }
 
     public function create(Category $category, Post $post){
@@ -61,10 +61,13 @@ class PostController extends Controller
         return view('my-notification');
     }
 
-    public function search(Request $request){
+    public function search(Request $request, Category $category){
+        $category = Category::all();
         $search1 = $request->get('search1');
-        $post = DB::table('posts')->where('title', 'like', '%'.$search1.'%')->orWhere('body', 'like', '%'.$search1.'%')->paginate(5);
-        return view('posts.index', compact('post'), ['posts' => $post]);
+        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+        ->join("category","category.id","=","posts.category_id")
+        ->where('title', 'like', '%'.$search1.'%')->orWhere('body', 'like', '%'.$search1.'%')->get();
+        return view('posts.index', compact('posts', 'category'), ['posts' => $posts]);
     }
 
     public function store(Request $request){
@@ -79,17 +82,15 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->created_by = auth()->user()->id;
         $post->save();
-        return redirect('/home')->with('success','Post created successfully!');
+        return redirect('/admin')->with('success','Post created successfully!');
     }
     
     public function blog(){
-        $post = DB::table('posts')->get();
-        $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
-        ->join("category","category.id","=","posts.category_id")->get();
-        return view('posts.admin-blog', compact('post'));
+        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+        ->join("category","category.id","=","posts.category_id")->simplePaginate(4);
+        return view('posts.admin-blog', compact('posts'), ['posts' => $posts]);
     }
     
-
     public function edit(Post $post){
         return view('posts.edit', compact('post'), ['posts' => $post]);
     }
@@ -104,14 +105,19 @@ class PostController extends Controller
 
     public function searchblog(Request $request){
         $searchblog = $request->get('searchblog');
-        $post = DB::table('posts')->where('title', 'like', '%'.$searchblog.'%')->orWhere('body', 'like', '%'.$searchblog.'%')->paginate(5);
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+                ->join("category","category.id","=","posts.category_id")
+                ->where('title', 'like', '%'.$searchblog.'%')->orWhere('body', 'like', '%'.$searchblog.'%')->get();
         return view('posts.posts_view', compact('post'), ['posts' => $post]);
     }
 
-    public function category(Request $request, Post $post){
-        $categorysearch = $request->get('categorysearch');
-        $category = DB::table('category')->where('category_name', 'like', '%'.$categorysearch.'%')->paginate(5);
-        return view('posts.index', compact('category', 'post'), ['category' => $category, 'post' => $post]);
+    public function category(Request $request, Post $posts, Category $category){
+        $category = Category::all();
+        $category_name = $request->get('category_name');
+        $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
+                ->join("category","category.id","=","posts.category_id")
+                ->where('category_name', 'like', '%'.$category_name.'%')->get();
+        return view('posts.index', compact('category', 'posts'), ['category' => $category, 'posts' => $posts]);
     }
 
     public function show(Request $comments, Post $post){
@@ -119,6 +125,27 @@ class PostController extends Controller
         $comments = DB::table('comments')->where('user_id', Auth::id())->get();
         $comments = DB::table('comments')->where('post_id', $post->id)->get();
         return view('posts.show', compact('post','comments', 'user'), ['comments' => $comments, 'user' => $user, 'posts' => $post]);
+    }
+
+    public function showadmin(Request $comments, Post $post, Category $category){
+        $user = DB::table('user')->where('id',Auth::id())->get();
+        
+        $comments = DB::table('comments')->where('user_id', Auth::id())->get();
+        $comments = DB::table('comments')->where('post_id', $post->id)->get();
+        
+        // $post = Post::select('posts.title,posts.body,category.category_name FROM posts,category WHERE posts.category_id=category.id');
+
+        // $post = DB::table('posts')->select('post.title','posts.body');
+        // $category = DB::table('category')->whereNull('category.category_name')->unionAll($post)->get();
+
+        $post = Post::select('posts.id','posts.title','posts.body','posts.created_by','user.name','category.category_name')
+                ->join('category','category.id','=','posts.category_id')
+                ->join('user','user.id','=','posts.created_by')->get();
+        echo '**13124***';
+        echo $post;
+        
+        return view('posts.showadmin', compact('post','comments','user', 'category'), ['comments' => $comments, 'user' => $user, 'post' => $post]);
+
     }
 
     public function comment(Request $comments, Post $post)
@@ -146,7 +173,6 @@ class PostController extends Controller
         $comment->post_id = $request->post_id;
         $comment->body = $request->body;
         $comment->save();
-        return redirect('/posts-view');
     }
 
     public function update(Post $post, Request $request){
@@ -157,11 +183,11 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return redirect('/home')->with('success','Post updated successfully!');
+        return redirect('/admin')->with('success','Post updated successfully!');
     }
 
     public function destroy(Post $post){
         $post->delete();
-        return redirect('/home')->with('success','Post deleted successfully!');
+        return redirect('/admin')->with('success','Post deleted successfully!');
     }
 }

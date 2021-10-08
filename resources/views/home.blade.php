@@ -21,8 +21,12 @@
                                                 Category:
                                                 <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                             </p>
+                                            <p>
+                                                By:
+                                                <span class="btn btn-sm btn-success">{{ $post->name }}</span>
+                                            </p>
                                             <br>
-                                            <!-- <a href="read/{{$post->id}}" class="btn btn-primary mb-2">Read more</a> -->
+                                            {{-- <a href="read/{{$post->id}}" class="btn btn-primary mb-2">Read more</a> --}}
                                         </div>
                                     </div>
                                 </div>

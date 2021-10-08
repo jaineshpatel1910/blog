@@ -17,21 +17,18 @@
                                 </form>
                             </div>
 
-                            <!-- <div class="col-md-4">
-                                <form role="dropdown" action="/category" method="GET">
-                                    {{ csrf_field() }}
+                            <div class="col-md-4">
+                                <form role="dropdown" action="/category-search" method="GET">
                                     <div class="form-group">
                                         <div class="input-group m-t-10">
-                                            <input type="dropdown" name="category" class="form-control" placeholder="Search by category">
+                                            <input type="dropdown" name="category_name" class="form-control" placeholder="Search by category">
                                             <div class="input-group-btn">
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="overflow: hidden; position: relative;"><span class="caret"></span></button>  
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </form>
-                            </div> -->
-
-                        
+                            </div>
                         </div>
                         
                         <div class="row">
@@ -45,7 +42,7 @@
                                             <h4><p>{{ $post->body }}</p></h4>
                                             <h4><p>
                                                     Category:
-                                                    <span class="btn btn-sm btn-success"></span>
+                                                    <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                                 </p></h4>
                                                 <br>
                                             <p><a href="posts/{{$post->id}}" class="btn btn-primary">Comment</a></p>

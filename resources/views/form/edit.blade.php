@@ -19,12 +19,12 @@
                                         <h4>Edit</h4>
                                     </div>
                                     <div class="panel-body">
-                                        <form action="/user/{{$user->id}}" method="POST">
+                                        <form action="/makeblogger/{{ $user->id }}" method="POST">
                                             @csrf
                                             <div class="switchery-demo">
                                                 <input type="checkbox" name="is_admin" value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" /> Make Admin
                                             </div><br>
-                                            <input class="btn btn-success" type="submit" value="Submit">     
+                                            <input class="btn btn-success" type="submit" value="Submit">    
                                         </form>
                                     </div>
                                 </div>

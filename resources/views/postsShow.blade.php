@@ -231,7 +231,7 @@
                                     
                                 </li>
                                 <li>
-                                    <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
+                                    <a href="/rate" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
                                 </li>
                             </ul>
                         </div>
@@ -246,7 +246,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            
                                 <div class="col-lg-4">
                                     <div class="panel panel-color panel-primary">
                                         <div class="panel-heading">

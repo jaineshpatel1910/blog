@@ -18,6 +18,11 @@ class MessageController extends Controller
         return view('message.index', ['user' => $user]);
     }
 
+    public function admin(){
+        $user = DB::select('select * from user');
+        return view('message.admin', ['user' => $user]);
+    }
+
     public function show(Request $message, User $user){
         $user = DB::table('user')->where('id',Auth::id())->get();
         return view('message.show', compact('user'),['message' => $message, 'user' => $user]);

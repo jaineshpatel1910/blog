@@ -28,12 +28,9 @@
                             <!-- Top nav left menu -->
                             <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
                                 <li><a href="/homepage">Home</a></li>
-                                <!-- <li><a href="#">Help</a></li>
-                                <li><a href="#">Contact</a></li> -->
+                                {{-- <li><a href="#">Help</a></li>
+                                <li><a href="#">Contact</a></li> --}}
                             </ul>
-
-                            
-
 
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
                                 

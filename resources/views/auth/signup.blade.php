@@ -40,9 +40,9 @@
                                 </div>
                                 <br>
                                 <div class="account-content">
-                                    @if (session('success'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('success') }}
+                                    @if (session('errors'))
+                                        <div class="alert alert-errors" role="alert">
+                                            {{ session('errors') }}
                                         </div>
                                     @endif
                                     <form class="form-horizontal" action="{{ route('user.registration') }}" method="POST">
@@ -50,7 +50,7 @@
                                         <div class="form-group m-b-20">
                                             <div class="col-xs-12">
                                                 <label for="name">Name</label>
-                                                <input class="form-control" type="text" id="name" required="" placeholder="Enter name">
+                                                <input class="form-control" type="text" id="name" placeholder="Enter name">
                                                 @if ($errors->has('name'))
                                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                                 @endif
@@ -60,7 +60,7 @@
                                         <div class="form-group m-b-20">
                                             <div class="col-xs-12">
                                                 <label for="email">Email</label>
-                                                <input class="form-control" type="email" id="email" required="" placeholder="Enter email">
+                                                <input class="form-control" type="email" id="email" placeholder="Enter email">
                                                 @if ($errors->has('email'))
                                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                                 @endif
@@ -70,7 +70,7 @@
                                         <div class="form-group m-b-20">
                                             <div class="col-xs-12">
                                                 <label for="password">Password</label>
-                                                <input class="form-control" type="password" id="password" required="" placeholder="Enter password">
+                                                <input class="form-control" type="password" id="password" placeholder="Enter password">
                                                 @if ($errors->has('password'))
                                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                                 @endif
@@ -80,7 +80,7 @@
                                         <div class="form-group m-b-20">
                                             <div class="col-xs-12">
                                                 <label for="confirm_password">Confirm Password</label>
-                                                <input class="form-control" type="password" id="confirm_password" required="" placeholder="Confirm Password">
+                                                <input class="form-control" type="password" id="confirm_password" placeholder="Confirm Password">
                                                 @if ($errors->has('confirm_password'))
                                                     <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
                                                 @endif
@@ -90,7 +90,7 @@
                                         <div class="form-group m-b-20">
                                             <div class="col-xs-12">
                                                 <label for="phone_number">Phone Number</label>
-                                                <input class="form-control" type="integer" id="phone_number" required="" placeholder="+91">
+                                                <input class="form-control" type="integer" id="phone_number" placeholder="+91">
                                                 @if ($errors->has('phone_number'))
                                                     <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                                 @endif

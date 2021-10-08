@@ -15,7 +15,7 @@ class CategoryController extends Controller
 
     public function create(){
         $user = DB::table('user')->where('id',Auth::id())->get();
-        return view('category.create');   
+        return view('category.create');
     }
 
     public function store(Request $request){
@@ -23,6 +23,6 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->created_by = auth()->user()->id;
         $category->save();
-        return redirect('/home');
+        return redirect('/admin');
     }
 }

@@ -231,7 +231,7 @@
                                     
                                 </li>
                                 <li>
-                                    <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
+                                    <a href="/rate" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
                                 </li>
                             </ul>
                         </div>
@@ -262,7 +262,7 @@
                                                 <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $post->averageRating }}" data-size="xs" disabled="">
                                             </p>
                                             <br>
-                                        <p><a href="post/{{$post->id}}/rate" class="btn btn-primary">View</a></p>
+                                        <p><a href="rate/{{$post->id}}" class="btn btn-primary">View</a></p>
                                         </div>
                                     </div>
                                 </div>

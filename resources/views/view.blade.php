@@ -16,13 +16,13 @@
                                                 <img src="assets/images/users/avatar-3.jpg" class="img-circle img-thumbnail" alt="profile-image">
                                                 <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
                                             </div>
-                                            <!-- <div class="">
+                                            {{-- <div class="">
                                                 <h4 class="m-b-5"></h4>
                                                 <p class="text-muted">@webdesigner</p>
-                                            </div> -->
-                                            <!-- <p class="text-muted m-t-10">
+                                            </div>
+                                            <p class="text-muted m-t-10">
                                                 Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
-                                            </p> -->
+                                            </p> --}}
                                             <button type="button" class="btn btn-primary m-t-10">Follow</button>
                                             <button type="button" class="btn btn-custom m-t-10">Message</button>
 

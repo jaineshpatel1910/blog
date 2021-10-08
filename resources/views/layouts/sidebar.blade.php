@@ -26,6 +26,7 @@
                                     <ul class="nav-second-level nav" aria-expanded="true">
                                         <li><a href="/login">Login</a></li>
                                         <li><a href="/register">Register</a></li>
+                                        <li><a href="/form">To become blogger</a></li>
                                     </ul>
                                 </li>
 
@@ -69,7 +70,7 @@
                                     </ul> -->
                                 </li>
                                 <li>
-                                    <a href="post" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
+                                    <a href="/rate" aria-expanded="true"><i class="mdi mdi-assistant"></i> Ratings </a>
                                 </li>
                             </ul>
                         </div>

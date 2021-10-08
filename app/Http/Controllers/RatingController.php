@@ -17,11 +17,24 @@ class RatingController extends Controller
         return view('posts',compact('post'));
     }
 
+    public function adminposts()
+    {
+        $post = Post::all();
+        $post = Post::select("posts.id","posts.title","posts.body","category.category_name")
+                ->join("category","category.id","=","posts.category_id")->get();
+        return view('adminposts',compact('post'));
+    }
+
     public function show(Post $post)
     {
-        
         $user = DB::table('user')->where('id',Auth::id())->get();
         return view('postsShow',compact('post'));
+    }
+
+    public function adminshow(Post $post)
+    {
+        $user = DB::table('user')->where('id',Auth::id())->get();
+        return view('adminpostsShow',compact('post'));
     }
 
     public function postPost(Request $request)
