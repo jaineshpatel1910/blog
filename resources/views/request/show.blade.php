@@ -48,7 +48,7 @@
                                             
                                         </form>
                                         <br>
-                                        <form action="/makeblogger/{{ $user->id }}/update" method="POST">
+                                        <form action="/makeblogger/{{ $form->id }}/update" method="POST">
                                             @csrf
                                             <input type="hidden" name="accepted" value="1" data-plugin="switchery" data-color="#1bb99a" data-secondary-color="#ff5d48" />
                                             
