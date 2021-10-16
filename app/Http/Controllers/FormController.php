@@ -36,9 +36,9 @@ class FormController extends Controller
 
     public function edit(Request $request, Form $form){
         $request->validate([
-            'accepted' => '',
+            'status' => '',
         ]);
-        $form->accepted = $request->accepted;
+        $form->status = $request->status;
         $form->save();
     }
 

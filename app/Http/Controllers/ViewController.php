@@ -25,7 +25,10 @@ class ViewController extends Controller
     }
 
     public function view(Post $post){
-        $comment = DB::select('select * from comments');
+        $comment = Comment::all();
+        $comment = Comment::select("posts.id","posts.title","user.name","comments.body")
+                ->join("posts","posts.id","=","comments.post_id")
+                ->join("user","user.id","=","comments.user_id")->get();
         return view('comments.view',['comments'=>$comment, 'posts'=>$post]);
     }
 

@@ -42,6 +42,8 @@ Route::get('/read/{post}', [AuthController::class, 'read']);
 //admin-home page blog
 Route::get('/adminhome', [AuthController::class, 'admin']);
 
+Route::get('/basehome', [AuthController::class, 'base']);
+
 //chat 
 // Route::get('/', [ChatController::class, 'index']);
 // Route::post('/store', [ChatController::class, 'store'])->name('store');
@@ -49,7 +51,7 @@ Route::get('/adminhome', [AuthController::class, 'admin']);
 // form to become blogger
 Route::get('/form', [FormController::class, 'form']);
 Route::post('/formstore', [FormController::class, 'formstore']);
-Route::post('/makeblogger/{user}/update', [FormController::class, 'edit']);
+Route::post('/makeblogger/{form}/update', [FormController::class, 'edit']);
 Route::post('/makeblogger/{user}', [FormController::class, 'update']);
 
 //show request to admin
@@ -115,10 +117,11 @@ Route::get('/admin/posts/{post}', [PostController::class, 'showadmin']);
 
 Route::get('/posts/{post}/comment', [PostController::class, 'comment']);
 Route::post('posts/{post}/comments', [PostController::class, 'comments']);
-
+Route::delete('/comment/{comment}', [PostController::class, 'delete']);
 
 Route::delete('posts/{post}', [PostController::class, 'destroy']);
 Route::get('/admin/search1', [PostController::class, 'search']);
+Route::get('/admin/search2', [PostController::class, 'searchadmin']);
 
 //search blog in user panel
 Route::get('/searchblog', [PostController::class, 'searchblog']);

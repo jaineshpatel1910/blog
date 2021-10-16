@@ -25,11 +25,10 @@ class AuthController extends Controller
 
     public function read(Post $post, User $user, Category $category){
         $category = Category::all();
-        // $post = Post::select('posts.title,posts.body,category.category_name FROM posts INNER JOIN category ON posts.id=category.id')->where('title', $post)->get();
-        // $post = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
-        // ->join("category","category.id","=","posts.category_id")
-        // ->join("user","user.id","=","posts.created_by")
-        // ->where('title', $post)->get();
+        $post = Post::select("posts.id","posts.title","posts.body","user.name","category.category_name")
+                ->join("category","category.id","=","posts.category_id")
+                ->join("user","user.id","=","posts.created_by")
+                ->where('posts.id', $post->id)->get();
         return view('read', compact('post', 'user', 'category'),['user' => $user, 'post' => $post, 'category' => $category]);
     }
 
@@ -39,6 +38,14 @@ class AuthController extends Controller
         ->join("category","category.id","=","posts.category_id")
         ->join("user","user.id","=","posts.created_by")->get(); 
         return view('adminhome', compact('post'));
+    }
+
+    public function base(){
+        $post = Post::all();
+        $post = Post::select("posts.id","posts.title","posts.body","posts.created_by","user.name","category.category_name")
+        ->join("category","category.id","=","posts.category_id")
+        ->join("user","user.id","=","posts.created_by")->get(); 
+        return view('basehome', compact('post'));
     }
 
     public function index(){

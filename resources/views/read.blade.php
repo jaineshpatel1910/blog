@@ -9,6 +9,7 @@
         </div>
     </div>
     <div class="row">
+        @foreach ($post as $post)
         <div class="col-lg-4">
             <div class="panel panel-color panel-primary">
                 <div class="panel-heading">
@@ -27,6 +28,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 <!-- end container -->

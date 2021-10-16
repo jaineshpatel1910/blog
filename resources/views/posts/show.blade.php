@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
                     <div class="container">
@@ -7,7 +7,7 @@
                                 <h3 class="header-title m-t-0 m-b-20">Write Comments</h3>
                             </div>
                         </div>
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="col-lg-4">
                                 <div class="panel panel-color panel-primary">
                                     <div class="panel-heading">
@@ -16,6 +16,7 @@
                                                 {{ session('status') }}
                                             </div>
                                         @endif
+                                        @foreach ($post as $post)
                                         <h4>{{ $post->title }}</h4>
                                     </div>
                                     <div class="panel-body">
@@ -24,13 +25,17 @@
                                             Category:
                                             <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                         </p></h4>
+                                        <p>
+                                            By:
+                                            <span class="btn btn-sm btn-success">{{ $post->name }}</span>
+                                        </p>
                                         <br>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <br>
-
+                        @endforeach
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="panel panel-color panel-primary">
@@ -65,23 +70,31 @@
                         
                         <div class="row">
                             @foreach ($comments as $comment)
-                                <div class="col-lg-4">
-                                    <div class="panel panel-color panel-primary">
-                                        <div class="panel-heading">
-                                        @if (session('status'))
-                                                <div class="alert alert-success" role="alert">
-                                                    {{ session('status') }}
-                                                </div>
-                                            @endif
-                                            <h4>Comments</h4>
+                                    <h4 class="question">Comments</h4>
+                                    <p class="answer">User : {{ $comment->name }}</p>
+                                    <p class="answer">Post title : {{ $comment->title }}</p>
+                                    <p class="answer">Comment : {{ $comment->body }}</p>
+                            
+                                    {{-- <div class="col-lg-4">
+                                        <div class="panel panel-color panel-primary">
+                                            <div class="panel-heading">
+                                            @if (session('status'))
+                                                    <div class="alert alert-success" role="alert">
+                                                        {{ session('status') }}
+                                                    </div>
+                                                @endif
+                                                <h4>Comments</h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <h5><p>User : {{ $comment->name }}</p></h5>
+                                                <h5><p>Post title: {{ $comment->title }}</p></h5>
+                                                <h5><p>Comment: {{ $comment->body }}</p></h5>
+                                            </div>
                                         </div>
-                                        <div class="panel-body">
-                                            <h5><p>User id: {{ $comment->user_id }}</p></h5>
-                                            <h5><p>Post id: {{ $comment->post_id }}</p></h5>
-                                            <h5><p>Comment: {{ $comment->body }}</p></h5>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </div> --}}
+                                
+                                <br>
+                            
                             @endforeach
                         </div>
                     </div>

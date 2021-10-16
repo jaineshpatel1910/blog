@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.base')
 
 @section('content')
                     <div class="container">
@@ -16,19 +16,6 @@
                                     </div>
                                 </form>
                             </div>
-
-                            {{-- <div class="col-md-4">
-                                <form role="dropdown" action="/admin/category-search" method="GET">
-                                    <div class="form-group">
-                                        <div class="input-group m-t-10">
-                                            <input type="dropdown" name="category_name" class="form-control" placeholder="Search by category">
-                                            <div class="input-group-btn">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="overflow: hidden; position: relative;"><span class="caret"></span></button>  
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div> --}}
 
                             <div class="col-md-4">
                                 <form role="dropdown" action="/admin/category-search" method="GET">
@@ -84,5 +71,4 @@
                         </div>
 					</div>
                     <!-- end container -->
-
                     @endsection

@@ -70,6 +70,12 @@ class PostController extends Controller
         return view('posts.index', compact('posts', 'category'), ['posts' => $posts]);
     }
 
+    public function searchadmin(Request $request, Comment $comment, User $user){
+        $search2 = $request->get('search2');
+        $post = DB::table('posts')->where('title', 'like', '%'.$search2.'%')->orWhere('body', 'like', '%'.$search2.'%')->get();
+        return view('auth.admin_dashboard', compact('post'), ['post' => $post]);
+    }
+
     public function store(Request $request){
         $request->validate([
             'title' => 'required',
@@ -86,9 +92,10 @@ class PostController extends Controller
     }
     
     public function blog(){
+        $category = Category::all();
         $posts = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
-        ->join("category","category.id","=","posts.category_id")->simplePaginate(4);
-        return view('posts.admin-blog', compact('posts'), ['posts' => $posts]);
+        ->join("category","category.id","=","posts.category_id")->get();
+        return view('posts.admin-blog', compact('posts','category'), ['posts' => $posts, 'category' => $category]);
     }
     
     public function edit(Post $post){
@@ -97,10 +104,9 @@ class PostController extends Controller
 
     public function view(){
         $category = Category::all();
-        $post = DB::table('posts')->get();
         $post = Post::select("posts.id","posts.title","posts.body","posts.created_at","category.category_name")
                 ->join("category","category.id","=","posts.category_id")->get();
-        return view('posts.posts_view', compact('post','category'), ['posts' => $post, 'category' => $category]);
+        return view('posts.posts_view', compact('post','category'), ['post' => $post, 'category' => $category]);
     }
 
     public function searchblog(Request $request){
@@ -123,29 +129,29 @@ class PostController extends Controller
     public function show(Request $comments, Post $post){
         $user = DB::table('user')->where('id',Auth::id())->get();
         $comments = DB::table('comments')->where('user_id', Auth::id())->get();
-        $comments = DB::table('comments')->where('post_id', $post->id)->get();
-        return view('posts.show', compact('post','comments', 'user'), ['comments' => $comments, 'user' => $user, 'posts' => $post]);
+        $comments = Comment::select("posts.id","posts.title","user.name","comments.body","comments.post_id","comments.user_id")
+                ->join("posts","posts.id","=","comments.post_id")
+                ->join("user","user.id","=","comments.user_id")
+                ->where('post_id', $post->id)->get();
+        $post = Post::select("posts.id","posts.title","posts.body","user.name","category.category_name")
+                ->join("category","category.id","=","posts.category_id")
+                ->join("user","user.id","=","posts.created_by")
+                ->where('posts.id', $post->id)->get();
+        return view('posts.show', compact('post','comments', 'user'), ['comments' => $comments, 'user' => $user, 'post' => $post]);
     }
 
-    public function showadmin(Request $comments, Post $post, Category $category){
+    public function showadmin(Request $comments, Post $post){
         $user = DB::table('user')->where('id',Auth::id())->get();
-        
         $comments = DB::table('comments')->where('user_id', Auth::id())->get();
-        $comments = DB::table('comments')->where('post_id', $post->id)->get();
-        
-        // $post = Post::select('posts.title,posts.body,category.category_name FROM posts,category WHERE posts.category_id=category.id');
-
-        // $post = DB::table('posts')->select('post.title','posts.body');
-        // $category = DB::table('category')->whereNull('category.category_name')->unionAll($post)->get();
-
-        $post = Post::select('posts.id','posts.title','posts.body','posts.created_by','user.name','category.category_name')
-                ->join('category','category.id','=','posts.category_id')
-                ->join('user','user.id','=','posts.created_by')->get();
-        echo '**13124***';
-        echo $post;
-        
-        return view('posts.showadmin', compact('post','comments','user', 'category'), ['comments' => $comments, 'user' => $user, 'post' => $post]);
-
+        $comments = Comment::select("posts.id","posts.title","user.name","comments.body","comments.post_id","comments.user_id")
+                ->join("posts","posts.id","=","comments.post_id")
+                ->join("user","user.id","=","comments.user_id")
+                ->where('post_id', $post->id)->get();
+        $post = Post::select("posts.id","posts.title","posts.body","user.name","category.category_name")
+                ->join("category","category.id","=","posts.category_id")
+                ->join("user","user.id","=","posts.created_by")
+                ->where('posts.id', $post->id)->get();
+        return view('posts.showadmin', compact('post','comments','user'), ['comments' => $comments, 'user' => $user, 'posts' => $post]);
     }
 
     public function comment(Request $comments, Post $post)
@@ -189,5 +195,9 @@ class PostController extends Controller
     public function destroy(Post $post){
         $post->delete();
         return redirect('/admin')->with('success','Post deleted successfully!');
+    }
+
+    public function delete(Comment $comment){
+        $comment->delete();
     }
 }

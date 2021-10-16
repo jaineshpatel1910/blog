@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.base')
 
 @section('content')
 <div class="container">
@@ -63,7 +63,6 @@
                                 <th>Created at</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach ($blogs as $blog)
                             <tr>

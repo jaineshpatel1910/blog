@@ -10,5 +10,5 @@ class Form extends Model
     use HasFactory;
 
     protected $table = 'blogger';
-    protected $fillable = ['type_of_blog', 'experience', 'created_by','accepted'];
+    protected $fillable = ['type_of_blog', 'experience', 'created_by','accepted', 'status'];
 }

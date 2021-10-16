@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
                     <div class="container">
@@ -18,13 +18,17 @@
                             </div>
 
                             <div class="col-md-4">
-                                <form role="dropdown" action="/category-search" method="GET">
+                                <form role="dropdown" action="/admin/category-search" method="GET">
                                     <div class="form-group">
                                         <div class="input-group m-t-10">
-                                            <input type="dropdown" name="category_name" class="form-control" placeholder="Search by category">
-                                            <div class="input-group-btn">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="overflow: hidden; position: relative;"><span class="caret"></span></button>  
-                                            </div>
+                                            <label for="category">Search category: &nbsp;</label>
+                                            <select name="category_name" id="">
+                                                @foreach ($category as $category)
+                                                    <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                                @endforeach
+                                            </select>
+                                            &nbsp;
+                                            <button class="btn btn-primary" type="submit">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -45,7 +49,7 @@
                                                     <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                                 </p></h4>
                                                 <br>
-                                            <p><a href="posts/{{$post->id}}" class="btn btn-primary">Comment</a></p>
+                                            <p><a href="/posts/{{$post->id}}" class="btn btn-primary">Comment</a></p>
                                         </div>
                                     </div>
                                 </div>

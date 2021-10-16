@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.base')
 
 @section('content')
                     <div class="container">
@@ -17,21 +17,27 @@
                                         <table class="table table-hover mails m-0 table table-actions-bar">
                                             <thead>
                                                 <tr>
-                                                    <th>User Id</th>
-                                                    <th>Post Id</th>
+                                                    <th>User Name</th>
+                                                    <th>Post Title</th>
                                                     <th>Comment</th>
-                                                    <th>Created at</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
                                                 @foreach ($comments as $comment)
                                                     <tr>
-                                                        <td>{{ $comment->user_id }}</td>
-                                                        <td>{{ $comment->post_id }}</td>
+                                                        <td>{{ $comment->name }}</td>
+                                                        <td>{{ $comment->title }}</td>
                                                         <td>{{ $comment->body }}</td> 
-                                                        <td>{{ $comment->created_at }}</td> 
-
+                                                        <td>
+                                                            <form action="/comment/{{$comment->id}}" method="post" class="d-inline">
+                                                                {{ csrf_field() }}
+                                                                @method('DELETE')
+                                                                <br>
+                                                                <button class="btn btn-danger" type="submit">Delete</button>
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -44,5 +50,4 @@
 
                     </div>
                     <!-- end container -->
-
                     @endsection

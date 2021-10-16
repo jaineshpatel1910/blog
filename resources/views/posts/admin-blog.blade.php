@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.base')
 @section('content')           
                     <div class="container">
                         <div class="row">
@@ -20,13 +20,13 @@
                                                     <span class="btn btn-sm btn-success">{{ $post->category_name }}</span>
                                                 </p></h4>
                                                 <br>
-                                            <p><a href="admin/posts/{{$post->id}}" class="btn btn-primary">Show</a></p>
+                                            <p><a href="/admin/posts/{{$post->id}}" class="btn btn-primary">Show</a></p>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        {{$posts->links()}}
+                       
                     </div> 
                     <!-- end container -->
                     @endsection
